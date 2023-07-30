@@ -1,0 +1,146 @@
+.container {
+  font-family: "Source Sans Pro", sans-serif;
+  line-height: 1;
+  color: #635f85;
+  font-size: 16px;
+  font-weight: 400;
+
+  .wrapper {
+    max-width: 1440px;
+    margin: 0 auto;
+
+    .navigation {
+      padding: 10px 20px 40px;
+      max-width: 1160px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      transition: all 0.5s ease-in-out;
+
+      .logo {
+        display: block;
+        max-width: 100%;
+        width: 250px;
+      }
+
+      .toggle-check {
+        display: none;
+      }
+
+      .menu {
+        height: 86px;
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        gap: 0 40px;
+        list-style: none;
+        margin-bottom: 0;
+
+        .toggle-close {
+          display: none;
+          margin: 30px 0 15px;
+        }
+
+        .menu-item {
+          .menu-link {
+            color: inherit;
+            position: relative;
+            transition: all 0.2s linear;
+            display: block;
+            text-decoration: none;
+
+            &:hover {
+              color: #ff7d00;
+
+              &::before {
+                width: 100%;
+              }
+            }
+            
+            &::before {
+              content: "";
+              position: absolute;
+              bottom: -5px;
+              left: 0;
+              height: 2px;
+              background-color: #ff7d00;
+              width: 0;
+              transition: all 0.2s linear;
+            }
+          }
+
+          .link-active {
+            &::before {
+            }
+          }
+        }
+
+        .auth {
+          height: 86px;
+          display: flex;
+          gap: 0 15px;
+          margin-left: 40px;
+          position: relative;
+          align-items: center;
+
+          .button-login {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            outline: none;
+            border: 0;
+            font-family: "Source Sans Pro", sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 1;
+            background-color: transparent;
+            border-radius: 100rem;
+            padding: 13px 32px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            color: #ff7d00;
+            border: 2px solid #e7e7e7;
+
+            &:hover {
+              color: #ff7d00;
+              border: 2px solid #ff7d00;
+            }
+          }
+
+          .button-signup {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            outline: none;
+            border: 0;
+            font-family: "Source Sans Pro", sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 1;
+            background-color: transparent;
+            border-radius: 100rem;
+            padding: 13px 32px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            color: white;
+            line-height: 1.5;
+            background: linear-gradient(
+              103.38deg,
+              #f67102 5.1%,
+              #f4a91e 86.29%
+            );
+
+            &:hover {
+              color: white;
+              background: linear-gradient(
+                103.38deg,
+                #f4a91e 5.1%,
+                #f67102 86.29%
+              );
+            }
+          }
+        }
+      }
+    }
+  }
+}
