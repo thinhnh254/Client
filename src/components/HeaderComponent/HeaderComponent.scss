@@ -68,11 +68,6 @@
               transition: all 0.2s linear;
             }
           }
-
-          .link-active {
-            &::before {
-            }
-          }
         }
 
         .auth {

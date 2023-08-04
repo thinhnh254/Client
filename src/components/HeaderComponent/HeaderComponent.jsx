@@ -13,7 +13,7 @@ const HeaderComponent = () => {
           <input type="checkbox" className="toggle-check" />
           <ul className="menu">
             <div className="menu-item toggle-close">
-              <label for="toggle-check">
+              <label htmlFor="toggle-check">
                 <img src={toggleClose} alt="Close" />
               </label>
             </div>
