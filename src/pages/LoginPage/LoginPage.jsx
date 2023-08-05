@@ -5,12 +5,39 @@ import {
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logoImage from "../../assets/Logo-main.png";
+import Loading from "../../components/LoadingComponent/Loading";
+import { useMutationHooks } from "../../hooks/useMutationHook";
+import * as UserServices from "../../services/UserService";
 import "./LoginPage.scss";
 
 const LoginPage = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const mutation = useMutationHooks((data) => UserServices.loginUser(data));
+
+  const { data, isLoading } = mutation;
+
+  console.log("mutation: ", mutation);
+
+  const handleOnChangeEmail = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handleOnChangePassword = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const handleLogin = () => {
+    mutation.mutate({
+      email,
+      password,
+    });
+  };
+
   return (
     <div className="container">
       <div className="form-login">
@@ -27,20 +54,26 @@ const LoginPage = () => {
         <div className="form-group">
           <input
             type="text"
-            name="username"
-            placeholder="Your username"
+            value={email}
+            onChange={handleOnChangeEmail}
+            placeholder="Your email"
             className="input-text"
           />
           <input
             type="password"
-            name="password"
+            valuse={password}
+            onChange={handleOnChangePassword}
             placeholder="Your password"
             className="input-text"
           />
-          <br />
-          <button>Login</button>
+          {data?.status === "ERROR" && (
+            <span className="error">{data?.message}</span>
+          )}
+          <Loading isLoading={isLoading}>
+            <button onClick={handleLogin}>Login</button>
+          </Loading>
         </div>
-        <span className="error">Error</span>
+
         <p className="forgotPwd">
           <a href="#">Forgot Password</a>
         </p>

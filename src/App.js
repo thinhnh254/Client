@@ -10,13 +10,13 @@ function App() {
   //   fetchApi();
   // }, []);
 
-  const fetchApi = async () => {
-    const res = await axios.get(`http://localhost:3515/product/getAll`);
-    return res.data;
-  };
+  // const fetchApi = async () => {
+  //   const res = await axios.get(`http://localhost:3515/product/getAll`);
+  //   return res.data;
+  // };
 
-  const query = useQuery({ queryKey: ["todos"], queryFn: fetchApi });
-  console.log("Query: ", query);
+  // const query = useQuery({ queryKey: ["todos"], queryFn: fetchApi });
+  // console.log("Query: ", query);
 
   return (
     <div>
