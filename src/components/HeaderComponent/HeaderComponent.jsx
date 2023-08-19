@@ -16,6 +16,7 @@ const HeaderComponent = () => {
   const [isActiveSearch, setIsActiveSearch] = useState(false);
   const [isActiveCart, setIsActiveCart] = useState(false);
   const [isActiveUser, setIsActiveUser] = useState(false);
+  const [isActiveMenu, setIsActiveMenu] = useState(false);
 
   const handleToggleSearch = () => {
     setIsActiveSearch((prevVisible) => !prevVisible);
@@ -29,6 +30,10 @@ const HeaderComponent = () => {
     setIsActiveUser((prevVisible) => !prevVisible);
   };
 
+  const handleToggleMenu = () => {
+    setIsActiveMenu((prevVisible) => !prevVisible);
+  };
+
   // const user = useSelector((state) => state.user);
   // console.log("user: ", user);
   return (
@@ -39,28 +44,30 @@ const HeaderComponent = () => {
       </Link>
 
       {/* Navbar */}
-      <nav className="navbar">
-        <Link className="menu-link" to={"#"}>
-          Home
-        </Link>
-        <Link className="menu-link" to={"#"}>
-          Food
-        </Link>
-        <Link className="menu-link" to={"#"}>
-          Blogs
-        </Link>
-        <Link className="menu-link" to={"#"}>
-          Service
-        </Link>
-        <Link className="menu-link" to={"#"}>
-          Contact
-        </Link>
-      </nav>
+      {isActiveMenu && (
+        <nav className="navbar">
+          <Link className="menu-link" to={"#"}>
+            Home
+          </Link>
+          <Link className="menu-link" to={"#"}>
+            Food
+          </Link>
+          <Link className="menu-link" to={"#"}>
+            Blogs
+          </Link>
+          <Link className="menu-link" to={"#"}>
+            Service
+          </Link>
+          <Link className="menu-link" to={"#"}>
+            Contact
+          </Link>
+        </nav>
+      )}
 
       {/* Icons */}
       <div className="icons">
         {/* Menu Icon */}
-        <div className="items" id="menu-btn">
+        <div className="items" id="menu-btn" onClick={handleToggleMenu}>
           <FontAwesomeIcon icon={faBars} />
         </div>
 
