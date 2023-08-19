@@ -15,6 +15,7 @@ import "./HeaderComponent.scss";
 const HeaderComponent = () => {
   const [isActiveSearch, setIsActiveSearch] = useState(false);
   const [isActiveCart, setIsActiveCart] = useState(false);
+  const [isActiveUser, setIsActiveUser] = useState(false);
 
   const handleToggleSearch = () => {
     setIsActiveSearch((prevVisible) => !prevVisible);
@@ -22,6 +23,10 @@ const HeaderComponent = () => {
 
   const handleToggleCart = () => {
     setIsActiveCart((prevVisible) => !prevVisible);
+  };
+
+  const handleToggleUser = () => {
+    setIsActiveUser((prevVisible) => !prevVisible);
   };
 
   // const user = useSelector((state) => state.user);
@@ -115,9 +120,15 @@ const HeaderComponent = () => {
         )}
 
         {/* User Icon */}
-        <div className="items" id="user-btn">
+        <div className="items" id="user-btn" onClick={handleToggleUser}>
           <FontAwesomeIcon icon={faUser} />
         </div>
+        {/* User Form */}
+        {isActiveUser && (
+          <form action="" className="user-form">
+            <h3>Your Name</h3>
+          </form>
+        )}
       </div>
     </header>
   );

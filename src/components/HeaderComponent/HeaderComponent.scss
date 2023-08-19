@@ -33,6 +33,7 @@
 
   .icons {
     display: flex;
+
     .items {
       cursor: pointer;
       height: 4.5rem;
@@ -169,5 +170,16 @@
         color: #fff;
       }
     }
+  }
+
+  .user-form {
+    position: absolute;
+    top: 110%;
+    width: 35rem;
+    right: 2rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: var(--box-shadow);
+    background: #fff;
   }
 }
