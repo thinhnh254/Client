@@ -1,140 +1,172 @@
-.container1 {
-  font-family: "Source Sans Pro", sans-serif;
-  line-height: 1;
-  color: #635f85;
-  font-size: 16px;
-  font-weight: 400;
+.header {
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 9%;
+  background: #fff;
+  box-shadow: var(--box-shadow);
 
-  .wrapper {
-    max-width: 1440px;
-    margin: 0 auto;
+  .logo {
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+    width: 188px;
+    height: 64.5px;
+    cursor: pointer;
+  }
 
-    .navigation {
-      padding: 10px 20px 40px;
-      max-width: 1160px;
-      margin: 0 auto;
+  .navbar {
+    .menu-link {
+      font-size: 1.7rem;
+      margin: 0 1rem;
+      color: var(--black);
+
+      &:hover {
+        color: var(--orange);
+      }
+    }
+  }
+
+  .icons {
+    display: flex;
+    .items {
+      cursor: pointer;
+      height: 4.5rem;
+      width: 4.5rem;
+      line-height: 4.5rem;
+      border-radius: 0.5rem;
+      background: #eee;
+      color: var(--black);
+      font-size: 2rem;
+      margin-left: 0.3rem;
+      text-align: center;
+
+      &:hover {
+        background: #fff;
+        color: var(--orange);
+      }
+    }
+
+    #menu-btn {
+      display: none;
+    }
+  }
+
+  .search-form {
+    position: absolute;
+    top: 110%;
+    right: 2rem;
+    width: 50rem;
+    height: 5rem;
+    background: #fff;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    box-shadow: var(--box-shadow);
+
+    input {
+      height: 100%;
+      width: 100%;
+      background: none;
+      text-transform: none;
+      font-size: 1.6rem;
+      color: var(--black);
+      padding: 0 1.5rem;
+    }
+
+    label {
+      font-size: 2.2rem;
+      padding-right: 1.5rem;
+      color: var(--black);
+      cursor: pointer;
+
+      &:hover {
+        color: var(--orange);
+      }
+    }
+  }
+
+  .shopping-cart {
+    position: absolute;
+    top: 110%;
+    width: 35rem;
+    right: 2rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: var(--box-shadow);
+    background: #fff;
+
+    .box {
       display: flex;
       align-items: center;
-      transition: all 0.5s ease-in-out;
+      gap: 1rem;
+      position: relative;
+      margin: 1rem 0;
 
-      .logo {
-        display: block;
-        max-width: 100%;
-        width: 250px;
+      .trash {
+        position: absolute;
+        font-size: 2rem;
+        top: 50%;
+        right: 2rem;
+        cursor: pointer;
+        color: var(--light-color);
+        transform: translateY(-50%);
+
+        &:hover {
+          color: var(--orange);
+        }
       }
 
-      .toggle-check {
-        display: none;
+      .food {
+        height: 10rem;
       }
 
-      .menu {
-        height: 86px;
-        margin-left: auto;
-        display: flex;
-        align-items: center;
-        gap: 0 40px;
-        list-style: none;
-        margin-bottom: 0;
-
-        .toggle-close {
-          display: none;
-          margin: 30px 0 15px;
+      .content {
+        h3 {
+          color: var(--black);
+          font-size: 1.7rem;
+          padding-bottom: 1rem;
         }
 
-        .menu-item {
-          .menu-link {
-            color: inherit;
-            position: relative;
-            transition: all 0.2s linear;
-            display: block;
-            text-decoration: none;
-
-            &:hover {
-              color: #ff7d00;
-
-              &::before {
-                width: 100%;
-              }
-            }
-
-            &::before {
-              content: "";
-              position: absolute;
-              bottom: -5px;
-              left: 0;
-              height: 2px;
-              background-color: #ff7d00;
-              width: 0;
-              transition: all 0.2s linear;
-            }
-          }
+        span {
+          color: var(--light-color);
+          font-size: 1.6rem;
         }
 
-        .auth {
-          height: 86px;
-          display: flex;
-          gap: 0 15px;
-          margin-left: 40px;
-          position: relative;
-          align-items: center;
-
-          .button-login {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            outline: none;
-            border: 0;
-            font-family: "Source Sans Pro", sans-serif;
-            font-weight: 500;
-            font-size: 16px;
-            line-height: 1;
-            background-color: transparent;
-            border-radius: 100rem;
-            padding: 13px 32px;
-            cursor: pointer;
-            transition: all 0.3s ease-in-out;
-            color: #ff7d00;
-            border: 2px solid #e7e7e7;
-
-            &:hover {
-              color: #ff7d00;
-              border: 2px solid #ff7d00;
-            }
-          }
-
-          .button-signup {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            outline: none;
-            border: 0;
-            font-family: "Source Sans Pro", sans-serif;
-            font-weight: 500;
-            font-size: 16px;
-            line-height: 1;
-            background-color: transparent;
-            border-radius: 100rem;
-            padding: 13px 32px;
-            cursor: pointer;
-            transition: all 0.3s ease-in-out;
-            color: white;
-            line-height: 1.5;
-            background: linear-gradient(
-              103.38deg,
-              #f67102 5.1%,
-              #f4a91e 86.29%
-            );
-
-            &:hover {
-              color: white;
-              background: linear-gradient(
-                103.38deg,
-                #f4a91e 5.1%,
-                #f67102 86.29%
-              );
-            }
-          }
+        .quantity {
+          padding-left: 1rem;
         }
+      }
+    }
+
+    .total {
+      font-size: 2.5rem;
+      padding: 1rem 0;
+      text-align: center;
+      color: var(--black);
+    }
+
+    .btn {
+      display: block;
+      align-items: center;
+      text-align: center;
+      margin: 1rem;
+      margin-top: 1rem;
+      padding: 0.8rem 3rem;
+      font-size: 1.7rem;
+      border-radius: 0.5rem;
+      border: 0.2rem solid var(--black);
+      color: var(--black);
+      cursor: pointer;
+
+      &:hover {
+        background: var(--orange);
+        color: #fff;
       }
     }
   }

@@ -1,11 +1,29 @@
 import axios from "axios";
 
 export const loginUser = async (data) => {
-  const res = await axios.post(`http://localhost:3515/user/login`, data);
+  const res = await axios.post(
+    `${process.env.REACT_APP_API_URL}/user/login`,
+    data
+  );
   return res.data;
 };
 
 export const registerUser = async (data) => {
-  const res = await axios.post(`http://localhost:3515/user/register`, data);
+  const res = await axios.post(
+    `${process.env.REACT_APP_API_URL}/user/register`,
+    data
+  );
+  return res.data;
+};
+
+export const getDetailsUser = async (id, access_token) => {
+  const res = await axios.get(
+    `${process.env.REACT_APP_API_URL}/user/getDetails/${id}`,
+    {
+      Headers: {
+        token: `Beare ${access_token}`,
+      },
+    }
+  );
   return res.data;
 };

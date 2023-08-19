@@ -5,21 +5,30 @@ import {
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import logoImage from "../../assets/Logo-main.png";
 import Loading from "../../components/LoadingComponent/Loading";
+import * as message from "../../components/Message/Message";
 import { useMutationHooks } from "../../hooks/useMutationHook";
-import * as UserServices from "../../services/UserService";
+import * as UserService from "../../services/UserService";
 import "./LoginPage.scss";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-  const mutation = useMutationHooks((data) => UserServices.loginUser(data));
+  const mutation = useMutationHooks((data) => UserService.loginUser(data));
 
   const { data, isLoading } = mutation;
+
+  useEffect(() => {
+    if (data?.message === "SUCCESS") {
+      message.success();
+      navigate("/register");
+    }
+  }, [data, navigate]);
 
   console.log("mutation: ", mutation);
 
