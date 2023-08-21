@@ -44,25 +44,23 @@ const HeaderComponent = () => {
       </Link>
 
       {/* Navbar */}
-      {isActiveMenu && (
-        <nav className="navbar">
-          <Link className="menu-link" to={"#"}>
-            Home
-          </Link>
-          <Link className="menu-link" to={"#"}>
-            Food
-          </Link>
-          <Link className="menu-link" to={"#"}>
-            Blogs
-          </Link>
-          <Link className="menu-link" to={"#"}>
-            Service
-          </Link>
-          <Link className="menu-link" to={"#"}>
-            Contact
-          </Link>
-        </nav>
-      )}
+      <nav className="navbar">
+        <Link className="menu-link" to={"#"}>
+          Home
+        </Link>
+        <Link className="menu-link" to={"#"}>
+          Food
+        </Link>
+        <Link className="menu-link" to={"#"}>
+          Blogs
+        </Link>
+        <Link className="menu-link" to={"#"}>
+          Service
+        </Link>
+        <Link className="menu-link" to={"#"}>
+          Contact
+        </Link>
+      </nav>
 
       {/* Icons */}
       <div className="icons">
@@ -70,6 +68,26 @@ const HeaderComponent = () => {
         <div className="items" id="menu-btn" onClick={handleToggleMenu}>
           <FontAwesomeIcon icon={faBars} />
         </div>
+        {/* Navbar-form */}
+        {isActiveMenu && (
+          <form className="navbar-form">
+            <Link className="menu-link" to={"#"}>
+              Home
+            </Link>
+            <Link className="menu-link" to={"#"}>
+              Food
+            </Link>
+            <Link className="menu-link" to={"#"}>
+              Blogs
+            </Link>
+            <Link className="menu-link" to={"#"}>
+              Service
+            </Link>
+            <Link className="menu-link" to={"#"}>
+              Contact
+            </Link>
+          </form>
+        )}
 
         {/* Search Icon */}
         <div className="items" id="search-btn" onClick={handleToggleSearch}>
