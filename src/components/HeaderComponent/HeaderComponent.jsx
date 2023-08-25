@@ -15,27 +15,37 @@ import "./HeaderComponent.scss";
 const HeaderComponent = () => {
   const [isActiveSearch, setIsActiveSearch] = useState(false);
   const [isActiveCart, setIsActiveCart] = useState(false);
-  const [isActiveUser, setIsActiveUser] = useState(false);
+  const [isActiveAuth, setIsActiveAuth] = useState(false);
   const [isActiveMenu, setIsActiveMenu] = useState(false);
 
-  const handleToggleSearch = () => {
-    setIsActiveSearch((prevVisible) => !prevVisible);
+  const handleSearchClick = () => {
+    setIsActiveSearch((prevIsActive) => !prevIsActive);
+    setIsActiveCart(false);
+    setIsActiveAuth(false);
+    setIsActiveMenu(false);
   };
 
-  const handleToggleCart = () => {
-    setIsActiveCart((prevVisible) => !prevVisible);
+  const handleCartClick = () => {
+    setIsActiveCart((prevIsActive) => !prevIsActive);
+    setIsActiveSearch(false);
+    setIsActiveAuth(false);
+    setIsActiveMenu(false);
   };
 
-  const handleToggleUser = () => {
-    setIsActiveUser((prevVisible) => !prevVisible);
+  const handleAuthClick = () => {
+    setIsActiveAuth((prevIsActive) => !prevIsActive);
+    setIsActiveSearch(false);
+    setIsActiveCart(false);
+    setIsActiveMenu(false);
   };
 
-  const handleToggleMenu = () => {
-    setIsActiveMenu((prevVisible) => !prevVisible);
+  const handleMenuClick = () => {
+    setIsActiveMenu((prevIsActive) => !prevIsActive);
+    setIsActiveSearch(false);
+    setIsActiveCart(false);
+    setIsActiveAuth(false);
   };
 
-  // const user = useSelector((state) => state.user);
-  // console.log("user: ", user);
   return (
     <header className="header">
       {/* Logo */}
@@ -44,18 +54,21 @@ const HeaderComponent = () => {
       </Link>
 
       {/* Navbar */}
-      <nav className="navbar">
+      <nav className={`navbar ${isActiveMenu ? "active" : ""}`}>
         <Link className="menu-link" to={"#"}>
           Home
         </Link>
         <Link className="menu-link" to={"#"}>
-          Food
+          Shop
         </Link>
         <Link className="menu-link" to={"#"}>
-          Blogs
+          About
         </Link>
         <Link className="menu-link" to={"#"}>
-          Service
+          Review
+        </Link>
+        <Link className="menu-link" to={"#"}>
+          Blog
         </Link>
         <Link className="menu-link" to={"#"}>
           Contact
@@ -65,96 +78,83 @@ const HeaderComponent = () => {
       {/* Icons */}
       <div className="icons">
         {/* Menu Icon */}
-        <div className="items" id="menu-btn" onClick={handleToggleMenu}>
+        <div className="items" id="menu-btn" onClick={handleMenuClick}>
           <FontAwesomeIcon icon={faBars} />
         </div>
-        {/* Navbar-form */}
-        {isActiveMenu && (
-          <form className="navbar-form">
-            <Link className="menu-link" to={"#"}>
-              Home
-            </Link>
-            <Link className="menu-link" to={"#"}>
-              Food
-            </Link>
-            <Link className="menu-link" to={"#"}>
-              Blogs
-            </Link>
-            <Link className="menu-link" to={"#"}>
-              Service
-            </Link>
-            <Link className="menu-link" to={"#"}>
-              Contact
-            </Link>
-          </form>
-        )}
 
         {/* Search Icon */}
-        <div className="items" id="search-btn" onClick={handleToggleSearch}>
+        <div className="items" id="search-btn" onClick={handleSearchClick}>
           <FontAwesomeIcon icon={faMagnifyingGlass} />
         </div>
-        {/* Search Form */}
-        {isActiveSearch && (
-          <form action="" className={"search-form"}>
-            <input type="search" id="search-box" placeholder="Search here..." />
-            <label for="search-box" className="search">
-              <FontAwesomeIcon icon={faMagnifyingGlass} />
-            </label>
-          </form>
-        )}
 
         {/* Cart Icon */}
-        <div className="items" id="cart-btn" onClick={handleToggleCart}>
+        <div className="items" id="cart-btn" onClick={handleCartClick}>
           <FontAwesomeIcon icon={faCartShopping} />
         </div>
-        {/* Cart Form */}
-        {isActiveCart && (
-          <form className="shopping-cart">
-            <div className="box">
-              <FontAwesomeIcon icon={faTrashCan} className="trash" />
-              <img src={food} alt="food" className="food" />
-              <div className="content">
-                <h3>Noddles</h3>
-                <span className="price">$4.99</span>
-                <span className="quantity">qty: 1</span>
-              </div>
-            </div>
-            <div className="box">
-              <FontAwesomeIcon icon={faTrashCan} className="trash" />
-              <img src={food} alt="food" className="food" />
-              <div className="content">
-                <h3>Noddles</h3>
-                <span className="price">$4.99</span>
-                <span className="quantity">qty: 1</span>
-              </div>
-            </div>
-            <div className="box">
-              <FontAwesomeIcon icon={faTrashCan} className="trash" />
-              <img src={food} alt="food" className="food" />
-              <div className="content">
-                <h3>Noddles</h3>
-                <span className="price">$4.99</span>
-                <span className="quantity">qty: 1</span>
-              </div>
-            </div>
-            <div className="total">Total: $4.99</div>
-            <Link to={"#"} className="btn">
-              checkout
-            </Link>
-          </form>
-        )}
 
-        {/* User Icon */}
-        <div className="items" id="user-btn" onClick={handleToggleUser}>
+        {/* Auth Icon */}
+        <div className="items" id="user-btn" onClick={handleAuthClick}>
           <FontAwesomeIcon icon={faUser} />
         </div>
-        {/* User Form */}
-        {isActiveUser && (
-          <form action="" className="user-form">
-            <h3>Your Name</h3>
-          </form>
-        )}
       </div>
+
+      {/* search form */}
+      <form
+        action=""
+        className={`search-form ${isActiveSearch ? "active" : ""}`}
+      >
+        <input type="search" placeholder="search here..." id="search-box" />
+        <label htmlFor="search-box" className="search">
+          <FontAwesomeIcon icon={faMagnifyingGlass} />
+        </label>
+      </form>
+
+      {/* shopping-cart */}
+      <div className={`shopping-cart ${isActiveCart ? "active" : ""}`}>
+        <div className="box">
+          <FontAwesomeIcon icon={faTrashCan} className="trash" />
+          <img src={food} alt="food" />
+          <div className="content">
+            <h3>organic food</h3>
+            <span className="quantity">1</span>
+            <span className="multiply">x</span>
+            <span className="pice">$18.99</span>
+          </div>
+        </div>
+
+        <div className="box">
+          <FontAwesomeIcon icon={faTrashCan} className="trash" />
+          <img src={food} alt="food" />
+          <div className="content">
+            <h3>organic food</h3>
+            <span className="quantity">1</span>
+            <span className="multiply">1</span>
+            <span className="pice">$18.99</span>
+          </div>
+        </div>
+
+        <div className="box">
+          <FontAwesomeIcon icon={faTrashCan} className="trash" />
+          <img src={food} alt="food" />
+          <div className="content">
+            <h3>organic food</h3>
+            <span className="quantity">1</span>
+            <span className="multiply">1</span>
+            <span className="pice">$18.99</span>
+          </div>
+        </div>
+        <h3 className="total">
+          total: <span>56.97</span>
+        </h3>
+        <Link to={"#"} className="btn">
+          checkout
+        </Link>
+      </div>
+
+      {/* auth form */}
+      <form action="" className={`auth-form ${isActiveAuth ? "active" : ""}`}>
+        <h3>auth form</h3>
+      </form>
     </header>
   );
 };

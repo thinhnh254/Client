@@ -1,14 +1,17 @@
+@import "../../index.scss";
+
 .header {
-  position: relative;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
+  z-index: 1000;
+  background: $white;
+  box-shadow: $box-shadow;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 2rem 9%;
-  background: #fff;
-  box-shadow: var(--box-shadow);
 
   .logo {
     display: flex;
@@ -20,14 +23,13 @@
   }
 
   .navbar {
-    display: flex;
     .menu-link {
       font-size: 1.7rem;
+      color: $light-color;
       margin: 0 1rem;
-      color: var(--black);
 
       &:hover {
-        color: var(--orange);
+        color: $orange;
       }
     }
   }
@@ -36,160 +38,146 @@
     display: flex;
 
     .items {
+      font-size: 2.5rem;
+      margin-left: 1.7rem;
       cursor: pointer;
-      height: 4.5rem;
-      width: 4.5rem;
-      line-height: 4.5rem;
-      border-radius: 0.5rem;
-      background: #eee;
-      color: var(--black);
-      font-size: 2rem;
-      margin-left: 0.3rem;
-      text-align: center;
+      color: $light-color;
 
       &:hover {
-        background: #fff;
-        color: var(--orange);
-      }
-    }
-
-    #menu-btn {
-      display: none;
-    }
-
-    .navbar-form {
-      position: absolute;
-      top: 110%;
-      right: 2rem;
-      width: 30rem;
-      box-shadow: var(--box-shadow);
-      border-radius: 0.5rem;
-      background: #fff;
-
-      .menu-link {
-        font-size: 2rem;
-        margin: 2rem 2.5rem;
-        display: block;
+        color: $orange;
       }
     }
   }
 
   .search-form {
     position: absolute;
-    top: 110%;
+    top: -115%;
     right: 2rem;
     width: 50rem;
-    height: 5rem;
-    background: #fff;
     border-radius: 0.5rem;
-    overflow: hidden;
     display: flex;
     align-items: center;
-    box-shadow: var(--box-shadow);
+    height: 5.5rem;
+    box-shadow: $box-shadow;
+    background: $white;
+
+    &.active {
+      top: 115%;
+    }
 
     input {
       height: 100%;
       width: 100%;
-      background: none;
-      text-transform: none;
+      padding: 0 1.2rem;
       font-size: 1.6rem;
-      color: var(--black);
-      padding: 0 1.5rem;
+      color: $black;
+      text-transform: none;
     }
 
     label {
-      font-size: 2.2rem;
-      padding-right: 1.5rem;
-      color: var(--black);
+      font-size: 2rem;
+      margin-right: 1.7rem;
       cursor: pointer;
+      color: $light-color;
 
       &:hover {
-        color: var(--orange);
+        color: $orange;
       }
     }
   }
 
   .shopping-cart {
     position: absolute;
-    top: 110%;
-    width: 35rem;
-    right: 2rem;
-    padding: 1rem;
+    top: 115%;
+    right: -105%;
+    background: $white;
     border-radius: 0.5rem;
-    box-shadow: var(--box-shadow);
-    background: #fff;
+    box-shadow: $box-shadow;
+    width: 35rem;
+    padding: 2rem;
+
+    &.active {
+      right: 2rem;
+    }
 
     .box {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
       position: relative;
-      margin: 1rem 0;
 
       .trash {
         position: absolute;
-        font-size: 2rem;
         top: 50%;
         right: 2rem;
-        cursor: pointer;
-        color: var(--light-color);
         transform: translateY(-50%);
+        font-size: 2rem;
+        color: $light-color;
+        cursor: pointer;
 
         &:hover {
-          color: var(--orange);
+          color: $orange;
         }
       }
 
-      .food {
+      img {
         height: 10rem;
       }
 
       .content {
         h3 {
-          color: var(--black);
           font-size: 1.7rem;
-          padding-bottom: 1rem;
+          padding-bottom: 0.5rem;
+          color: $black;
         }
 
         span {
-          color: var(--light-color);
-          font-size: 1.6rem;
-        }
+          font-size: 1.5rem;
+          color: $light-color;
 
-        .quantity {
-          padding-left: 1rem;
+          &.multiply {
+            margin: 0 0.5rem;
+          }
         }
       }
     }
 
     .total {
-      font-size: 2.5rem;
-      padding: 1rem 0;
+      color: $light-color;
       text-align: center;
-      color: var(--black);
+      font-size: 2.2rem;
+
+      span {
+        color: $black;
+      }
     }
 
     .btn {
-      display: block;
-      align-items: center;
       text-align: center;
-      margin: 1rem;
+      width: 100%;
     }
   }
 
-  .user-form {
+  .auth-form {
     position: absolute;
-    top: 110%;
-    width: 35rem;
-    right: 2rem;
-    padding: 1rem;
+    top: 115%;
+    right: -105%;
+    background: $white;
     border-radius: 0.5rem;
-    box-shadow: var(--box-shadow);
-    background: #fff;
+    box-shadow: $box-shadow;
+    width: 35rem;
+    padding: 2rem;
+
+    &.active {
+      right: 2rem;
+    }
   }
 }
 
-// media query
+#menu-btn {
+  display: none;
+}
 
 @media (max-width: 991px) {
   .header {
@@ -198,28 +186,45 @@
 }
 
 @media (max-width: 768px) {
+  #menu-btn {
+    display: inline-block;
+  }
+
   .header {
-    .icons {
-      #menu-btn {
-        display: inline-block;
+    .search-form {
+      width: 100%;
+      right: 0;
+      border-radius: 0;
+
+      &.active {
+        top: 99%;
+        border-top: $border;
+        border-bottom: $border;
       }
     }
 
     .navbar {
-      display: none;
-      // position: absolute;
-      // top: 110%;
-      // right: 2rem;
-      // width: 30rem;
-      // box-shadow: var(--box-shadow);
-      // border-radius: 0.5rem;
-      // background: #fff;
+      position: absolute;
+      top: 99%;
+      left: 0;
+      right: 0;
+      background: $white;
+      border-top: $border;
+      border-bottom: $border;
+      clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
 
-      // .menu-link {
-      //   font-size: 2rem;
-      //   margin: 2rem 2.5rem;
-      //   display: block;
-      // }
+      &.active {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      }
+
+      .menu-link {
+        margin: 1.5rem;
+        padding: 1.5rem;
+        background: $ligh-bg;
+        font-size: 2rem;
+        display: block;
+        border-radius: 0.5rem;
+      }
     }
   }
 }
