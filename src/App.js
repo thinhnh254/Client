@@ -1,5 +1,3 @@
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import React, { Fragment } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import DefaultComponent from "./components/DefaultComponent/DefaultComponent";
