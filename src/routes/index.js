@@ -4,11 +4,17 @@ import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import OrderPage from "../pages/OrderPage/OrderPage";
 import ProductsPage from "../pages/ProductsPage/ProductsPage";
 import RegisterPage from "../pages/RegisterPage/RegisterPage";
+import ShopPage from "../pages/ShopPage/ShopPage";
 
 export const routes = [
   {
     path: "/",
     page: HomePage,
+    isShowHeader: true,
+  },
+  {
+    path: "/shop",
+    page: ShopPage,
     isShowHeader: true,
   },
   {

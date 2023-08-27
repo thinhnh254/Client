@@ -55,10 +55,10 @@ const HeaderComponent = () => {
 
       {/* Navbar */}
       <nav className={`navbar ${isActiveMenu ? "active" : ""}`}>
-        <Link className="menu-link" to={"#"}>
+        <Link className="menu-link" to={"/"}>
           Home
         </Link>
-        <Link className="menu-link" to={"#"}>
+        <Link className="menu-link" to={"/shop"}>
           Shop
         </Link>
         <Link className="menu-link" to={"#"}>
