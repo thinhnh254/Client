@@ -1,5 +1,6 @@
 import AboutPage from "../pages/AboutPage/AboutPage";
 import BlogPage from "../pages/BlogPage/BlogPage";
+import ContactPage from "../pages/ContactPage/ContactPage";
 import HomePage from "../pages/HomePage/HomePage";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
@@ -31,6 +32,11 @@ export const routes = [
   {
     path: "/blog",
     page: BlogPage,
+    isShowHeader: true,
+  },
+  {
+    path: "/contact",
+    page: ContactPage,
     isShowHeader: true,
   },
   {
