@@ -64,7 +64,7 @@ const HeaderComponent = () => {
         <Link className="menu-link" to={"/about"}>
           About
         </Link>
-        <Link className="menu-link" to={"#"}>
+        <Link className="menu-link" to={"/review"}>
           Review
         </Link>
         <Link className="menu-link" to={"#"}>

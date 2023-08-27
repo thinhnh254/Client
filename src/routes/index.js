@@ -3,6 +3,7 @@ import HomePage from "../pages/HomePage/HomePage";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import RegisterPage from "../pages/RegisterPage/RegisterPage";
+import ReviewPage from "../pages/ReviewPage/ReviewPage";
 import ShopPage from "../pages/ShopPage/ShopPage";
 
 export const routes = [
@@ -19,6 +20,11 @@ export const routes = [
   {
     path: "/about",
     page: AboutPage,
+    isShowHeader: true,
+  },
+  {
+    path: "/review",
+    page: ReviewPage,
     isShowHeader: true,
   },
   {
