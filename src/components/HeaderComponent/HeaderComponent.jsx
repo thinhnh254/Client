@@ -61,7 +61,7 @@ const HeaderComponent = () => {
         <Link className="menu-link" to={"/shop"}>
           Shop
         </Link>
-        <Link className="menu-link" to={"#"}>
+        <Link className="menu-link" to={"/about"}>
           About
         </Link>
         <Link className="menu-link" to={"#"}>
