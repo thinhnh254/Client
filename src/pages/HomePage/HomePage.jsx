@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import food1 from "../../assets/2minegga.png";
 import food2 from "../../assets/3miengca.png";
 import food3 from "../../assets/5miengga.png";
+import banner1 from '../../assets/cagetory1.png'
 import "./HomePage.scss";
 
 const HomePage = () => {
@@ -19,39 +20,76 @@ const HomePage = () => {
     setIndex(newIndex);
   };
   return (
-    <section className="home">
-      <div className="slides-container">
-        {slides.map((slide, idx) => (
-          <div className={`slide ${index === idx ? "active" : ""}`} key={idx}>
-            <div className="content">
-              <span>fresh and organic</span>
-              <h3>upto 50% off</h3>
-              <Link to="#" className="btn">
-                shop now
-              </Link>
+    <div>
+      <section className="home">
+        <div className="slides-container">
+          {slides.map((slide, idx) => (
+            <div className={`slide ${index === idx ? "active" : ""}`} key={idx}>
+              <div className="content">
+                <span>fresh and organic</span>
+                <h3>upto 50% off</h3>
+                <Link to="#" className="btn">
+                  shop now
+                </Link>
+              </div>
+              <div className="image">
+                <img src={slide} alt="" />
+              </div>
             </div>
-            <div className="image">
-              <img src={slide} alt="" />
-            </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
 
-      <div
-        id="next-slide"
-        className="next-icon"
-        onClick={() => handleSlideChange(1)}
-      >
-        <FontAwesomeIcon icon={faChevronRight} />
-      </div>
-      <div
-        id="prev-slide"
-        className="prev-icon"
-        onClick={() => handleSlideChange(-1)}
-      >
-        <FontAwesomeIcon icon={faChevronLeft} />
-      </div>
-    </section>
+        <div
+          id="next-slide"
+          className="next-icon"
+          onClick={() => handleSlideChange(1)}
+        >
+          <FontAwesomeIcon icon={faChevronRight} />
+        </div>
+        <div
+          id="prev-slide"
+          className="prev-icon"
+          onClick={() => handleSlideChange(-1)}
+        >
+          <FontAwesomeIcon icon={faChevronLeft} />
+        </div>
+      </section>
+
+      <section className="banner-container">
+        <div className="banner">
+          <img src={banner1} alt="" />
+          <div className="content">
+            <span>limited sales</span>
+            <h3>upto 50% off</h3>
+            <Link to={"#"} className="btn">
+              shop now
+            </Link>
+          </div>
+        </div>
+
+        <div className="banner">
+          <img src={banner1} alt="" />
+          <div className="content">
+            <span>limited sales</span>
+            <h3>upto 50% off</h3>
+            <Link to={"#"} className="btn">
+              shop now
+            </Link>
+          </div>
+        </div>
+
+        <div className="banner">
+          <img src={banner1} alt="" />
+          <div className="content">
+            <span>limited sales</span>
+            <h3>upto 50% off</h3>
+            <Link to={"#"} className="btn">
+              shop now
+            </Link>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 };
 export default HomePage;
