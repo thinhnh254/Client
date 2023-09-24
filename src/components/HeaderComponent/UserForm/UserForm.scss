@@ -1,0 +1,51 @@
+@import "../../../index.scss";
+
+.user-form {
+  position: absolute;
+  top: 110%;
+  right: -110%;
+  width: 35rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  padding: 2rem;
+  background: #fff;
+
+  &.active {
+    right: 2rem;
+  }
+
+  h3 {
+    text-transform: uppercase;
+    font-size: 2.5rem;
+    color: $black;
+  }
+
+  .box {
+    input {
+      width: 100%;
+      margin: 1rem 0;
+      font-size: 1.6rem;
+      text-transform: none;
+      color: $black;
+      padding: 1rem;
+      background: #eee;
+      border-radius: 0.5rem;
+    }
+  }
+
+  p {
+    font-size: 1.4rem;
+    color: $light-color;
+
+    a {
+      color: $orange;
+      text-decoration: underline;
+    }
+  }
+
+  button {
+    &:hover {
+      background: $orange;
+    }
+  }
+}

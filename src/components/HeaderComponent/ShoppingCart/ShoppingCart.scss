@@ -1,0 +1,58 @@
+@import "../../../index.scss";
+
+.shopping-cart {
+  position: absolute;
+  top: 110%;
+  right: -110%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  width: 30rem;
+  box-shadow: $box-shadow;
+  background: #fff;
+
+  &.active {
+    right: 2rem;
+  }
+
+  .box {
+    display: flex;
+    gap: 1;
+    align-items: center;
+    margin: 1rem 0;
+    position: relative;
+
+    img {
+      height: 10rem;
+    }
+
+    .content {
+      h3 {
+        color: $black;
+        font-size: 1.9rem;
+      }
+
+      span {
+        color: $light-color;
+        font-size: 1.6rem;
+      }
+
+      .quantity {
+        margin-left: 1rem;
+      }
+    }
+
+    .trash-icon {
+      position: absolute;
+      top: 50%;
+      right: 1.2rem;
+      color: $light-color;
+      font-size: 2rem;
+      cursor: pointer;
+      transform: translateY(-50%);
+
+      &:hover {
+        color: $orange;
+      }
+    }
+  }
+}

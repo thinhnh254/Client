@@ -1,0 +1,42 @@
+@import "../../../index.scss";
+
+.navbar {
+  &.active {
+    right: 2rem;
+  }
+  .link {
+    display: inline-block;
+    color: $black;
+    font-size: 1.7rem;
+    margin: 0 1rem;
+
+    &:hover {
+      color: $orange;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    .icons {
+      #menu-btn {
+        display: inline-block;
+      }
+    }
+
+    .navbar {
+      position: absolute;
+      top: 110%;
+      left: 55%;
+      width: 30rem;
+      background: $light-bg;
+      border-radius: 0.5rem;
+    }
+
+    .link {
+      display: block;
+      font-size: 2rem;
+      margin: 2rem 2.5rem;
+    }
+  }
+}

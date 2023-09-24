@@ -5,13 +5,26 @@ import {
   faStar,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { getCategories } from "../../api/app";
 import product from "../../assets/3miengca.png";
 import banner1 from "../../assets/icon-food.png";
 import "./ShopPage.scss";
 
 const ShopPage = () => {
+  const [categories, setCategories] = useState(null);
+  const fetchCategories = async () => {
+    const response = await getCategories();
+    if (response.success) {
+      setCategories(response.getAllCategoryStatus);
+    }
+  };
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+  console.log(categories);
+
   return (
     <div>
       <div className="heading">
@@ -26,31 +39,15 @@ const ShopPage = () => {
           </Link>
         </h1>
 
-        <div className="box-container">
-          <Link to={"#"} className="box">
-            <img src={banner1} alt="" />
-            <h3>fresh fruits</h3>
-          </Link>
-
-          <Link to={"#"} className="box">
-            <img src={banner1} alt="" />
-            <h3>fresh fruits</h3>
-          </Link>
-
-          <Link to={"#"} className="box">
-            <img src={banner1} alt="" />
-            <h3>fresh fruits</h3>
-          </Link>
-
-          <Link to={"#"} className="box">
-            <img src={banner1} alt="" />
-            <h3>fresh fruits</h3>
-          </Link>
-
-          <Link to={"#"} className="box">
-            <img src={banner1} alt="" />
-            <h3>fresh fruits</h3>
-          </Link>
+        <div className="box-container" style={{ display: "flex" }}>
+          {categories?.map((el, index) => (
+            <Link to={"#"} className="box">
+              <img src={banner1} alt="" />
+              <h3 key={index} style={{ marginRight: "10px" }}>
+                {el.title}
+              </h3>
+            </Link>
+          ))}
         </div>
       </section>
 

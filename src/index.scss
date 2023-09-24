@@ -1,24 +1,24 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&family=Space+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
 
 * {
+  text-transform: capitalize;
   font-family: "Poppins", sans-serif;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   outline: none;
-  border: none;
+  box-sizing: border-box;
   text-decoration: none;
-  text-transform: capitalize;
-  transition: 0.2 linear;
+  border: none;
+  transition: all linear 0.2s;
 }
 
 $orange: #ff7800;
-$black: #222;
+$black: #130f40;
 $white: #fff;
 $light-color: #666;
 $light-bg: #f3f3f3;
-$box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-$border: 0.1rem solid rgba(0, 0, 0, 0.1);
+$box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+$border: 0.2rem solid rgba(0, 0, 0, 0.1);
 $outline: 0.1rem solid rgba(0, 0, 0, 0.1);
 $outline-hover: 0.2rem solid var(--black);
 
@@ -32,63 +32,29 @@ html {
   font-size: 62.5%;
   overflow-x: hidden;
   scroll-behavior: smooth;
+  scroll-padding-top: 7rem;
 }
 
 section {
-  padding: 3rem 9%;
+  padding: 2rem 9%;
+}
+
+footer {
+  padding: 2rem 9%;
 }
 
 .heading {
-  background: #ffba86 no-repeat;
-  background-size: cover;
-  background-position: center;
   text-align: center;
-  padding-top: 12rem;
-  padding-bottom: 4rem;
-
-  h1 {
-    color: $black;
-    font-size: 4rem;
-  }
-
-  // p {
-  //   padding-top: 1rem;
-  //   font-size: 2rem;
-  //   color: $light-color;
-  //   padding-right: 0.5rem;
-
-  //   .link {
-  //     color: $black;
-
-  //     &:hover {
-  //       color: $orange;
-  //     }
-  //   }
-  // }
-}
-
-.title {
-  display: flex;
-  align-items: center;
-  font-size: 2.5rem;
-  margin-bottom: 3rem;
-  padding: 1.2rem 0;
-  border-bottom: $border;
-  color: $black;
+  font-size: 3.5rem;
+  color: var(--black);
+  padding: 2rem 0 3rem 0;
 
   span {
-    color: $orange;
-    padding-left: 0.7rem;
-  }
-
-  .link {
-    margin-left: auto;
-    color: $light-color;
-    font-size: 1.5rem;
-
-    &:hover {
-      color: $orange;
-    }
+    background: var(--orange);
+    color: #fff;
+    display: inline-block;
+    padding: 0.5rem 3rem;
+    clip-path: polygon(100% 0, 93% 50%, 100% 99%, 0 100%, 7% 50%, 0 0);
   }
 }
 
@@ -96,13 +62,16 @@ section {
   margin-top: 1rem;
   display: inline-block;
   padding: 0.8rem 3rem;
-  background: $orange;
-  color: $white;
   font-size: 1.7rem;
+  color: var(--black);
+  border: 0.2rem solid var(--black);
+  border-radius: 0.5rem;
   cursor: pointer;
+  background: none;
 
   &:hover {
-    background: $black;
+    color: #fff;
+    background: $orange;
   }
 }
 
@@ -112,7 +81,7 @@ section {
   }
 
   section {
-    padding: 3rem 2rem;
+    padding: 2rem;
   }
 }
 
@@ -124,6 +93,22 @@ section {
 
 @media (max-width: 450px) {
   html {
-    font-size: 55%;
+    font-size: 50%;
+  }
+
+  .heading {
+    font-size: 2.5rem;
+  }
+
+  .footer {
+    text-align: center;
+
+    .box-container {
+      .box {
+        img {
+          margin: 2rem auto;
+        }
+      }
+    }
   }
 }
