@@ -1,13 +1,26 @@
 @import "../../index.scss";
 
 .contact {
-  .icons-container {
-    @include grid(29rem);
+  padding-top: 12rem;
 
-    .icons {
+  .contact-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
+    gap: 1.5rem;
+
+    .box {
+      background: #fff;
+      box-shadow: $box-shadow;
+      border-radius: 0.5rem;
+      padding: 3rem 2rem;
       text-align: center;
-      border: $border;
-      padding: 2rem;
+      outline: $outline;
+      outline-offset: -1rem;
+
+      &:hover {
+        outline-offset: 0;
+        outline: $outline-hover;
+      }
 
       .items {
         height: 4rem;
@@ -39,6 +52,13 @@
       padding: 2rem;
       border: $border;
       flex: 1 1 40rem;
+      outline: $outline;
+      outline-offset: -1rem;
+
+      &:hover {
+        outline-offset: 0;
+        outline: $outline-hover;
+      }
 
       h3 {
         font-size: 2.5rem;
@@ -64,6 +84,10 @@
         color: $black;
         text-transform: none;
         margin: 0.7rem 0;
+
+        &:hover {
+          border: 2px solid $orange;
+        }
       }
 
       textarea {

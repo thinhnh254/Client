@@ -1,141 +1,103 @@
+import { faStar, faStarHalfAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import user from "../../assets/dua-heligan.jpg";
-import delivery from "../../assets/icon-delivery.png";
-import food from "../../assets/icon-food.png";
-import restaurant from "../../assets/icon-restaurant.png";
 import "./ReviewPage.scss";
 
 const ReviewPage = () => {
   return (
-    <div>
-      <div className="heading">
-        <h1>client's review</h1>
+    <section className="reviews" id="reviews">
+      <h1 className="heading">
+        customers <span>review</span>
+      </h1>
+
+      <div className="reviews-container">
+        <div className="box">
+          <img src={user} alt="" />
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis
+            maxime inventore illo nemo cupiditate quam eligendi nihil sunt
+            ullam, laudantium, earum in nam provident quaerat exercitationem?
+          </p>
+          <h3>john deo</h3>
+          <div className="stars">
+            <FontAwesomeIcon icon={faStar} />
+            <FontAwesomeIcon icon={faStar} />
+            <FontAwesomeIcon icon={faStar} />
+            <FontAwesomeIcon icon={faStar} />
+            <FontAwesomeIcon icon={faStarHalfAlt} />
+          </div>
+        </div>
+
+        <div className="box">
+          <img src={user} alt="" />
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis
+            maxime inventore illo nemo cupiditate quam eligendi nihil sunt
+            ullam, laudantium, earum in nam provident quaerat exercitationem?
+          </p>
+          <h3>john deo</h3>
+          <div className="stars">
+            <FontAwesomeIcon icon={faStar} />
+            <FontAwesomeIcon icon={faStar} />
+            <FontAwesomeIcon icon={faStar} />
+            <FontAwesomeIcon icon={faStar} />
+            <FontAwesomeIcon icon={faStarHalfAlt} />
+          </div>
+        </div>
+
+        <div className="box">
+          <img src={user} alt="" />
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis
+            maxime inventore illo nemo cupiditate quam eligendi nihil sunt
+            ullam, laudantium, earum in nam provident quaerat exercitationem?
+          </p>
+          <h3>john deo</h3>
+          <div className="stars">
+            <FontAwesomeIcon icon={faStar} />
+            <FontAwesomeIcon icon={faStar} />
+            <FontAwesomeIcon icon={faStar} />
+            <FontAwesomeIcon icon={faStar} />
+            <FontAwesomeIcon icon={faStarHalfAlt} />
+          </div>
+        </div>
+
+        <div className="box">
+          <img src={user} alt="" />
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis
+            maxime inventore illo nemo cupiditate quam eligendi nihil sunt
+            ullam, laudantium, earum in nam provident quaerat exercitationem?
+          </p>
+          <h3>john deo</h3>
+          <div className="stars">
+            <FontAwesomeIcon icon={faStar} />
+            <FontAwesomeIcon icon={faStar} />
+            <FontAwesomeIcon icon={faStar} />
+            <FontAwesomeIcon icon={faStar} />
+            <FontAwesomeIcon icon={faStarHalfAlt} />
+          </div>
+        </div>
+
+        <div className="box">
+          <img src={user} alt="" />
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis
+            maxime inventore illo nemo cupiditate quam eligendi nihil sunt
+            ullam, laudantium, earum in nam provident quaerat exercitationem?
+          </p>
+          <h3>john deo</h3>
+          <div className="stars">
+            <FontAwesomeIcon icon={faStar} />
+            <FontAwesomeIcon icon={faStar} />
+            <FontAwesomeIcon icon={faStar} />
+            <FontAwesomeIcon icon={faStar} />
+            <FontAwesomeIcon icon={faStarHalfAlt} />
+          </div>
+        </div>
       </div>
-
-      <section className="info-container">
-        <div className="info">
-          <img src={delivery} alt="" />
-          <div className="content">
-            <h3>fast delivery</h3>
-            <span>within 30 minutes</span>
-          </div>
-        </div>
-
-        <div className="info">
-          <img src={food} alt="" />
-          <div className="content">
-            <h3>fast delivery</h3>
-            <span>within 30 minutes</span>
-          </div>
-        </div>
-
-        <div className="info">
-          <img src={restaurant} alt="" />
-          <div className="content">
-            <h3>fast delivery</h3>
-            <span>within 30 minutes</span>
-          </div>
-        </div>
-      </section>
-
-      <section className="review">
-        <div className="box">
-          <div className="user">
-            <img src={user} alt="" />
-            <div className="info">
-              <h3>Thinh</h3>
-              <span>happy client</span>
-            </div>
-          </div>
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam
-            totam rem magnam voluptates deleniti nostrum quaerat commodi saepe
-            nobis id fugit sequi, illum minima non placeat eveniet explicabo
-            esse voluptatum?
-          </p>
-        </div>
-
-        <div className="box">
-          <div className="user">
-            <img src={user} alt="" />
-            <div className="info">
-              <h3>Thinh</h3>
-              <span>happy client</span>
-            </div>
-          </div>
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam
-            totam rem magnam voluptates deleniti nostrum quaerat commodi saepe
-            nobis id fugit sequi, illum minima non placeat eveniet explicabo
-            esse voluptatum?
-          </p>
-        </div>
-
-        <div className="box">
-          <div className="user">
-            <img src={user} alt="" />
-            <div className="info">
-              <h3>Thinh</h3>
-              <span>happy client</span>
-            </div>
-          </div>
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam
-            totam rem magnam voluptates deleniti nostrum quaerat commodi saepe
-            nobis id fugit sequi, illum minima non placeat eveniet explicabo
-            esse voluptatum?
-          </p>
-        </div>
-
-        <div className="box">
-          <div className="user">
-            <img src={user} alt="" />
-            <div className="info">
-              <h3>Thinh</h3>
-              <span>happy client</span>
-            </div>
-          </div>
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam
-            totam rem magnam voluptates deleniti nostrum quaerat commodi saepe
-            nobis id fugit sequi, illum minima non placeat eveniet explicabo
-            esse voluptatum?
-          </p>
-        </div>
-
-        <div className="box">
-          <div className="user">
-            <img src={user} alt="" />
-            <div className="info">
-              <h3>Thinh</h3>
-              <span>happy client</span>
-            </div>
-          </div>
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam
-            totam rem magnam voluptates deleniti nostrum quaerat commodi saepe
-            nobis id fugit sequi, illum minima non placeat eveniet explicabo
-            esse voluptatum?
-          </p>
-        </div>
-
-        <div className="box">
-          <div className="user">
-            <img src={user} alt="" />
-            <div className="info">
-              <h3>Thinh</h3>
-              <span>happy client</span>
-            </div>
-          </div>
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam
-            totam rem magnam voluptates deleniti nostrum quaerat commodi saepe
-            nobis id fugit sequi, illum minima non placeat eveniet explicabo
-            esse voluptatum?
-          </p>
-        </div>
-      </section>
-    </div>
+    </section>
   );
 };
 

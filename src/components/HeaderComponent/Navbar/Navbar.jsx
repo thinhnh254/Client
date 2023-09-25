@@ -1,29 +1,28 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { Link } from "react-router-dom";
 import "./Navbar.scss";
 
 const Navbar = ({ active }) => {
   return (
     <nav className={`navbar ${active ? "active" : ""}`}>
-      <Link className="link" to="/">
+      <a className="link" href="/">
         home
-      </Link>
-      <Link className="link" to="/shop">
+      </a>
+      <a className="link" href="/shop">
         shop
-      </Link>
-      <Link className="link" to="/about">
+      </a>
+      <a className="link" href="/about">
         about
-      </Link>
-      <Link className="link" to="/blog">
+      </a>
+      <a className="link" href="/blog">
         blog
-      </Link>
-      <Link className="link" to="/review">
+      </a>
+      <a className="link" href="/review">
         review
-      </Link>
-      <Link className="link" to="/contact">
+      </a>
+      <a className="link" href="/contact">
         contact
-      </Link>
+      </a>
     </nav>
   );
 };

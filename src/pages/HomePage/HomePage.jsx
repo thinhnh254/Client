@@ -8,7 +8,8 @@ import { Link } from "react-router-dom";
 import food1 from "../../assets/2minegga.png";
 import food2 from "../../assets/3miengca.png";
 import food3 from "../../assets/5miengga.png";
-import banner1 from '../../assets/cagetory1.png'
+import banner1 from "../../assets/icon-food.png";
+import delivery from "../../assets/icon-delivery.png";
 import "./HomePage.scss";
 
 const HomePage = () => {
@@ -55,37 +56,40 @@ const HomePage = () => {
         </div>
       </section>
 
-      <section className="banner-container">
-        <div className="banner">
-          <img src={banner1} alt="" />
-          <div className="content">
-            <span>limited sales</span>
-            <h3>upto 50% off</h3>
-            <Link to={"#"} className="btn">
-              shop now
-            </Link>
-          </div>
-        </div>
-
-        <div className="banner">
-          <img src={banner1} alt="" />
-          <div className="content">
-            <span>limited sales</span>
-            <h3>upto 50% off</h3>
-            <Link to={"#"} className="btn">
-              shop now
-            </Link>
-          </div>
-        </div>
-
-        <div className="banner">
-          <img src={banner1} alt="" />
-          <div className="content">
-            <span>limited sales</span>
-            <h3>upto 50% off</h3>
-            <Link to={"#"} className="btn">
-              shop now
-            </Link>
+      <section className="features" id="features">
+        <div className="content">
+          <h1 className="heading">
+            our <span>features</span>
+          </h1>
+          <div className="box-container">
+            <div className="box">
+              <img src={banner1} alt="" />
+              <h3>fresh and organic</h3>
+              <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit, quis!
+              </p>
+              <Link to="/" className="btn">
+                read more
+              </Link>
+            </div>
+            <div className="box">
+              <img src={delivery} alt="" />
+              <h3>free & fast delivery</h3>
+              <p>within 30 minutes</p>
+              <Link to="/" className="btn">
+                read more
+              </Link>
+            </div>
+            <div className="box">
+              <img src={banner1} alt="" />
+              <h3>easy payment</h3>
+              <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit, quis!
+              </p>
+              <Link to="/" className="btn">
+                read more
+              </Link>
+            </div>
           </div>
         </div>
       </section>

@@ -9,13 +9,18 @@
   background: #fff;
   border-radius: 0.5rem;
   box-shadow: $box-shadow;
+  border: 1px solid $black;
+
+  &:hover {
+    border: 1px solid $orange;
+  }
 
   &.active {
     right: 2rem;
   }
 
   #search-box {
-    height: 100%;
+    height: 90%;
     width: 100%;
     text-transform: none;
     padding: 0 1.5rem;

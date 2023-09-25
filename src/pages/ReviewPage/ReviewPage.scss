@@ -1,68 +1,88 @@
 @import "../../index.scss";
 
-.info-container {
-  @include grid(27rem);
+// .review {
+//   @include grid(30rem);
 
-  .info {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+//   .box {
+//     padding: 2rem;
+//     border: $border;
+
+//     .user {
+//       display: flex;
+//       align-items: center;
+//       gap: 1.5rem;
+//       margin-bottom: 1.5rem;
+
+//       img {
+//         height: 7rem;
+//         width: 7rem;
+//         border-radius: 50%;
+//       }
+
+//       h3 {
+//         font-size: 2.2rem;
+//         color: $black;
+//       }
+
+//       span {
+//         font-size: 1.4rem;
+//         color: $orange;
+//       }
+//     }
+
+//     p {
+//       font-size: 1.4rem;
+//       color: $light-color;
+//       line-height: 2;
+//     }
+//   }
+// }
+
+.reviews {
+  padding-top: 12rem;
+
+  .reviews-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
     gap: 1.5rem;
-    padding: 2rem 0;
 
-    img {
-      height: 7rem;
-    }
+    .box {
+      background: #fff;
+      border-radius: 0.5rem;
+      text-align: center;
+      padding: 3rem 2rem;
+      outline: $outline;
+      outline-offset: -1rem;
+      box-shadow: $box-shadow;
 
-    .content {
-      h3 {
-        font-size: 2rem;
-        color: $black;
-        padding-bottom: 0.5rem;
+      &:hover {
+        outline-offset: 0;
+        outline: $outline-hover;
       }
-
-      span {
-        font-size: 1.5rem;
-        color: $light-color;
-      }
-    }
-  }
-}
-
-.review {
-  @include grid(30rem);
-
-  .box {
-    padding: 2rem;
-    border: $border;
-
-    .user {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      margin-bottom: 1.5rem;
 
       img {
-        height: 7rem;
-        width: 7rem;
+        height: 10rem;
+        width: 10rem;
         border-radius: 50%;
       }
 
+      p {
+        padding: 1rem 0;
+        line-height: 1.8;
+        font-size: 1.5rem;
+        color: $light-color;
+      }
+
       h3 {
-        font-size: 2.2rem;
+        padding: 0.5rem;
         color: $black;
+        font-size: 2.2rem;
       }
 
-      span {
-        font-size: 1.4rem;
+      .stars {
         color: $orange;
+        font-size: 1.7rem;
       }
-    }
-
-    p {
-      font-size: 1.4rem;
-      color: $light-color;
-      line-height: 2;
     }
   }
 }

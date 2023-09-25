@@ -1,9 +1,4 @@
-import {
-  faCartPlus,
-  faEye,
-  faHeart,
-  faStar,
-} from "@fortawesome/free-solid-svg-icons";
+import { faStar, faStarHalfAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -23,191 +18,109 @@ const ShopPage = () => {
   useEffect(() => {
     fetchCategories();
   }, []);
-  console.log(categories);
+  // console.log(categories);
 
   return (
     <div>
-      <div className="heading">
-        <h1>our shop</h1>
-      </div>
-
       <section className="category">
-        <h1 className="title">
-          our <span>category</span>
-          <Link className="link" to={"#"}>
-            view all
-          </Link>
+        <h1 className="heading">
+          products <span>categories</span>
         </h1>
 
-        <div className="box-container" style={{ display: "flex" }}>
+        <div className="box-container">
           {categories?.map((el, index) => (
             <Link to={"#"} className="box">
               <img src={banner1} alt="" />
-              <h3 key={index} style={{ marginRight: "10px" }}>
-                {el.title}
-              </h3>
+              <h3 key={index}>{el.title}</h3>
             </Link>
           ))}
         </div>
       </section>
 
-      <section className="products">
-        <h1 className="title">
+      <section className="products" id="products">
+        <h1 className="heading">
           our <span>products</span>
-          <Link className="link" to={"#"}>
-            view all
-          </Link>
         </h1>
 
         <div className="box-container">
           <div className="box">
-            <div className="icons">
-              <Link className="icons-item" to={"#"}>
-                <FontAwesomeIcon icon={faCartPlus} />
-              </Link>
-              <Link className="icons-item" to={"#"}>
-                <FontAwesomeIcon icon={faHeart} />
-              </Link>
-              <Link className="icons-item" to={"#"}>
-                <FontAwesomeIcon icon={faEye} />
-              </Link>
+            <img src={product} alt="" />
+            <h3>fresh orange</h3>
+            <div className="price">$4.99/ -- 10.99/-</div>
+            <div className="stars">
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStarHalfAlt} />
             </div>
-
-            <div className="image">
-              <img src={product} alt="" />
-            </div>
-
-            <div className="content">
-              <h3>organic food</h3>
-              <div className="price">$18.99</div>
-              <div className="stars">
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-              </div>
-            </div>
+            <button type="button" className="btn">
+              add to cart
+            </button>
           </div>
 
           <div className="box">
-            <div className="icons">
-              <Link className="icons-item" to={"#"}>
-                <FontAwesomeIcon icon={faCartPlus} />
-              </Link>
-              <Link className="icons-item" to={"#"}>
-                <FontAwesomeIcon icon={faHeart} />
-              </Link>
-              <Link className="icons-item" to={"#"}>
-                <FontAwesomeIcon icon={faEye} />
-              </Link>
+            <img src={product} alt="" />
+            <h3>fresh orange</h3>
+            <div className="price">$4.99/ -- 10.99/-</div>
+            <div className="stars">
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStarHalfAlt} />
             </div>
-
-            <div className="image">
-              <img src={product} alt="" />
-            </div>
-
-            <div className="content">
-              <h3>organic food</h3>
-              <div className="price">$18.99</div>
-              <div className="stars">
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-              </div>
-            </div>
+            <button type="button" className="btn">
+              add to cart
+            </button>
           </div>
 
           <div className="box">
-            <div className="icons">
-              <Link className="icons-item" to={"#"}>
-                <FontAwesomeIcon icon={faCartPlus} />
-              </Link>
-              <Link className="icons-item" to={"#"}>
-                <FontAwesomeIcon icon={faHeart} />
-              </Link>
-              <Link className="icons-item" to={"#"}>
-                <FontAwesomeIcon icon={faEye} />
-              </Link>
+            <img src={product} alt="" />
+            <h3>fresh orange</h3>
+            <div className="price">$4.99/ -- 10.99/-</div>
+            <div className="stars">
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStarHalfAlt} />
             </div>
-
-            <div className="image">
-              <img src={product} alt="" />
-            </div>
-
-            <div className="content">
-              <h3>organic food</h3>
-              <div className="price">$18.99</div>
-              <div className="stars">
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-              </div>
-            </div>
+            <button type="button" className="btn">
+              add to cart
+            </button>
           </div>
 
           <div className="box">
-            <div className="icons">
-              <Link className="icons-item" to={"#"}>
-                <FontAwesomeIcon icon={faCartPlus} />
-              </Link>
-              <Link className="icons-item" to={"#"}>
-                <FontAwesomeIcon icon={faHeart} />
-              </Link>
-              <Link className="icons-item" to={"#"}>
-                <FontAwesomeIcon icon={faEye} />
-              </Link>
+            <img src={product} alt="" />
+            <h3>fresh orange</h3>
+            <div className="price">$4.99/ -- 10.99/-</div>
+            <div className="stars">
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStarHalfAlt} />
             </div>
-
-            <div className="image">
-              <img src={product} alt="" />
-            </div>
-
-            <div className="content">
-              <h3>organic food</h3>
-              <div className="price">$18.99</div>
-              <div className="stars">
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-              </div>
-            </div>
+            <button type="button" className="btn">
+              add to cart
+            </button>
           </div>
 
           <div className="box">
-            <div className="icons">
-              <Link className="icons-item" to={"#"}>
-                <FontAwesomeIcon icon={faCartPlus} />
-              </Link>
-              <Link className="icons-item" to={"#"}>
-                <FontAwesomeIcon icon={faHeart} />
-              </Link>
-              <Link className="icons-item" to={"#"}>
-                <FontAwesomeIcon icon={faEye} />
-              </Link>
+            <img src={product} alt="" />
+            <h3>fresh orange</h3>
+            <div className="price">$4.99/ -- 10.99/-</div>
+            <div className="stars">
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStar} />
+              <FontAwesomeIcon icon={faStarHalfAlt} />
             </div>
-
-            <div className="image">
-              <img src={product} alt="" />
-            </div>
-
-            <div className="content">
-              <h3>organic food</h3>
-              <div className="price">$18.99</div>
-              <div className="stars">
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-                <FontAwesomeIcon className="star-icon" icon={faStar} />
-              </div>
-            </div>
+            <button type="button" className="btn">
+              add to cart
+            </button>
           </div>
         </div>
       </section>

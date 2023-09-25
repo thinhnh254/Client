@@ -10,25 +10,24 @@ import "./ContactPage.scss";
 const ContactPage = () => {
   return (
     <div>
-      <div className="heading">
-        <h1>contact us</h1>
-      </div>
-
-      <section className="contact">
-        <div className="icons-container">
-          <div className="icons">
+      <section className="contact" id="contact">
+        <h1 className="heading">
+          our <span>contact</span>
+        </h1>
+        <div className="contact-container">
+          <div className="box">
             <FontAwesomeIcon className="items" icon={faPhone} />
             <h3>our number</h3>
             <p>+123-456-7890</p>
           </div>
 
-          <div className="icons">
+          <div className="box">
             <FontAwesomeIcon className="items" icon={faEnvelope} />
             <h3>our email</h3>
             <p>contact.us@gmail.com</p>
           </div>
 
-          <div className="icons">
+          <div className="box">
             <FontAwesomeIcon className="items" icon={faMapLocationDot} />
             <h3>our address</h3>
             <p>Da Nang, VietNam</p>
@@ -74,6 +73,7 @@ const ContactPage = () => {
             allowfullscreen=""
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
+            title="Greenwich Vietnam Danang Campus"
           ></iframe>
         </div>
       </section>

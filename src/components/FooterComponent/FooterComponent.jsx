@@ -9,7 +9,6 @@ import {
   faEnvelope,
   faMapMarkerAlt,
   faPhone,
-  faShoppingBasket,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
@@ -22,12 +21,7 @@ const FooterComponent = () => {
       <div className="box-container">
         <div className="box">
           <FontAwesomeIcon icon={["fas", "faUser"]} />
-          <h3>
-            groco
-            <i>
-              <FontAwesomeIcon icon={faShoppingBasket} />
-            </i>
-          </h3>
+          <h3>FATMe</h3>
           <p>
             Lorem, Ipsum Dolor Sit Amet Consectetur Adipisicing Elit. Natus,
             Laudantium?
@@ -79,7 +73,7 @@ const FooterComponent = () => {
             <i>
               <FontAwesomeIcon icon={faMapMarkerAlt} />
             </i>
-            pernambuco, brazil
+            DaNang, VietNam
           </Link>
         </div>
         <div className="box">
@@ -94,31 +88,31 @@ const FooterComponent = () => {
             <i>
               <FontAwesomeIcon icon={faArrowRight} />
             </i>
-            features
+            shop
           </Link>
           <Link to="#products" className="links">
             <i>
               <FontAwesomeIcon icon={faArrowRight} />
             </i>
-            products
+            about
           </Link>
           <Link to="#categories" className="links">
             <i>
               <FontAwesomeIcon icon={faArrowRight} />
             </i>
-            categories
+            blog
           </Link>
           <Link to="#reviews" className="links">
             <i>
               <FontAwesomeIcon icon={faArrowRight} />
             </i>
-            reviews
+            review
           </Link>
           <Link to="#blogs" className="links">
             <i>
               <FontAwesomeIcon icon={faArrowRight} />
             </i>
-            blogs
+            contact
           </Link>
         </div>
         <div className="box">
