@@ -5,22 +5,31 @@ import {
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { Link } from "react-router-dom";
 import logoImage from "../../assets/Logo-main.png";
 import "./LoginPage.scss";
 
 const LoginPage = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+  const [payload, setPayload] = useState({
+    email: "",
+    password: "",
+    name: "",
+  });
+  const [isRegister, setIsRegister] = useState(false);
+  const handleSubmit = useCallback(() => {
+    console.log(payload);
+  }, [payload]);
 
-  const handleOnChangeEmail = (e) => {
-    setEmail(e.target.value);
-  };
+  // const handleOnChangeEmail = (e) => {
+  //   setEmail(e.target.value);
+  // };
 
-  const handleOnChangePassword = (e) => {
-    setPassword(e.target.value);
-  };
+  // const handleOnChangePassword = (e) => {
+  //   setPassword(e.target.value);
+  // };
 
   return (
     <div className="container">
@@ -38,21 +47,23 @@ const LoginPage = () => {
         <div className="form-group">
           <input
             type="text"
-            value={email}
-            onChange={handleOnChangeEmail}
+            value={payload.email}
+            // onChange={handleOnChangeEmail}
+            onChange={setPayload}
             placeholder="Your email"
             className="input-text"
           />
           <input
             type="password"
-            valuse={password}
-            onChange={handleOnChangePassword}
+            valuse={payload.password}
+            // onChange={handleOnChangePassword}
+            onChange={setPayload}
             placeholder="Your password"
             className="input-text"
           />
           {<span className="error">error</span>}
 
-          <button>Login</button>
+          <button onClick={handleSubmit}>Login</button>
         </div>
 
         <p className="forgotPwd">
