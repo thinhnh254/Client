@@ -1,21 +1,28 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { register } from "../../apis/user";
 import logoImage from "../../assets/Logo-main.png";
-import Loading from "../../components/LoadingComponent/Loading";
 import "./RegisterPage.scss";
 
 const RegisterPage = () => {
   const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState(null);
+  const navigate = useNavigate(); // Initialize navigate function
 
   const handleOnChangeEmail = (e) => {
     setEmail(e.target.value);
   };
 
-  const handleOnChangeName = (e) => {
-    setName(e.target.value);
+  const handleOnChangeFirstName = (e) => {
+    setFirstName(e.target.value);
+  };
+
+  const handleOnChangeLastName = (e) => {
+    setLastName(e.target.value);
   };
 
   const handleOnChangePassword = (e) => {
@@ -24,6 +31,31 @@ const RegisterPage = () => {
 
   const handleOnChangeConfirmPassword = (e) => {
     setConfirmPassword(e.target.value);
+  };
+
+  const handleRegister = async () => {
+    try {
+      const response = await register(email, firstName, lastName, password);
+
+      if (response.success) {
+        setError(response.message);
+        setTimeout(() => {
+          navigate("/login"); // Navigate to the home page route
+        }, 3000); // 3000 milliseconds (3 seconds)
+      } else {
+        setError(response.message);
+      }
+      // Handle the response, e.g., store token, user info, etc.
+      console.log("Register successful:", response);
+    } catch (error) {
+      if (error.response && error.response.data && error.response.data.error) {
+        // If the backend provided an error message, update the error state
+        setError(error.response.data.error);
+      } else {
+        setError("An error occurred during register"); // Fallback message if no specific error message from backend
+      }
+      console.error("Error during register:", error);
+    }
   };
 
   return (
@@ -48,9 +80,16 @@ const RegisterPage = () => {
           />
           <input
             type="text"
-            value={name}
-            onChange={handleOnChangeName}
-            placeholder="Your username"
+            value={firstName}
+            onChange={handleOnChangeFirstName}
+            placeholder="Your firstname"
+            className="input-text"
+          />
+          <input
+            type="text"
+            value={lastName}
+            onChange={handleOnChangeLastName}
+            placeholder="Your lastname"
             className="input-text"
           />
           <input
@@ -79,10 +118,9 @@ const RegisterPage = () => {
               Accept terms and services
             </label>
           </div>
-          {<span className="error">error</span>}
-          <Loading>
-            <button>Register</button>
-          </Loading>
+          {error && <span className="error">{error}</span>}
+
+          <button onClick={handleRegister}>Register</button>
         </div>
       </div>
     </div>

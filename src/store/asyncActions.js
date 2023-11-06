@@ -13,7 +13,7 @@ export const getCategories = createAsyncThunk(
 
       return response.getAllCategoryStatus;
     } catch (error) {
-      return rejectWithValue("Failed to fetch categories");
+      return error;
     }
   }
 );
