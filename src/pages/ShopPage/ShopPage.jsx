@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getProducts } from "../../apis/app";
+import { getProducts } from "../../apis/product";
 import banner1 from "../../assets/icon-food.png";
 import "./ShopPage.scss";
 
@@ -13,10 +13,10 @@ const ShopPage = () => {
 
   const [products, setProducts] = useState(null);
   const fetchProducts = async () => {
-    // const product = await getProducts();
-    // if (product.success) {
-    //   setProducts(product.products);
-    // }
+    const product = await getProducts();
+    if (product.success) {
+      setProducts(product.products);
+    }
     const [bestSeller, newProducts] = await Promise.all([
       getProducts({ sort: "-sold" }),
       getProducts({ sort: "-createdAt" }),

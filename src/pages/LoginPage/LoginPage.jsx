@@ -7,8 +7,10 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { login } from "../../apis/user";
+import { apiLogin } from "../../apis/user";
 import logoImage from "../../assets/Logo-main.png";
+import { login } from "../../store/user/userSlice";
+import { useDispatch } from "react-redux";
 import "./LoginPage.scss";
 
 const LoginPage = () => {
@@ -16,6 +18,7 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const navigate = useNavigate(); // Initialize navigate function
+  const dispatch = useDispatch();
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -27,11 +30,12 @@ const LoginPage = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await login(email, password);
+      const response = await apiLogin(email, password);
 
       if (response.success) {
         setError(response.message);
         setTimeout(() => {
+          dispatch(login({isLoggedIn: true, token: response.accessToken, userData: response.userData}))
           navigate("/"); // Navigate to the home page route
         }, 3000); // 3000 milliseconds (3 seconds)
       } else {

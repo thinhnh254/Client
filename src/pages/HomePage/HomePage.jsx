@@ -11,10 +11,14 @@ import food3 from "../../assets/5miengga.png";
 import banner1 from "../../assets/icon-food.png";
 import delivery from "../../assets/icon-delivery.png";
 import "./HomePage.scss";
+import { useSelector } from "react-redux";
 
 const HomePage = () => {
   const slides = [food1, food2, food3];
   const [index, setIndex] = useState(0);
+  // const { isLoggedIn, current } = useSelector(state => state.user)
+  
+  // console.log({isLoggedIn, current})
 
   const handleSlideChange = (increment) => {
     const newIndex = (index + increment + slides.length) % slides.length;
