@@ -12,9 +12,9 @@ export const current = () => {
   return axios.get("/user/current");
 };
 
-// //Product Category
-// export const getCurrent = () =>
-//   axios({
-//     url: "/user/current",
-//     method: "get",
-//   });
+export const getAllUsers = (params) =>
+  axios({
+    url: "/user/",
+    method: "get",
+    params,
+  });
