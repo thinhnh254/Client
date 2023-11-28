@@ -1,10 +1,11 @@
 import PropTypes from "prop-types";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { getCurrent } from "../../../store/user/asyncActions";
 import { clearMessage, logout } from "../../../store/user/userSlice";
+import path from "../../../ultils/path";
 import "./UserForm.scss";
 
 const UserForm = ({ active }) => {
@@ -39,6 +40,9 @@ const UserForm = ({ active }) => {
           <button className="btn" onClick={() => dispatch(logout())}>
             Log out
           </button>
+          <Link className="btn" to={+current?.role === 0 ?  `/${path.ADMIN}/${path.DASHBOARD}` : `/${path.MEMBER}/${path.PERSONAL}`}>
+            <span>profile</span>
+          </Link>
         </div>
       ) : (
         <div>

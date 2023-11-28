@@ -6,36 +6,34 @@ export const appSlice = createSlice({
   initialState: {
     categories: null,
     isLoading: false,
+    isShowModal: false,
+    modalChildren: null,
   },
   reducers: {
-    logout: (state) => {
-      state.isLoading = false;
+    showModal: (state, action) => {
+      console.log(action);
+      state.isShowModal = action.payload.isShowModal;
+      state.modalChildren = action.payload.modalChildren;
     },
   },
-  //Code logic xử lý async action
+
   extraReducers: (builder) => {
-    // // Bắt đầu thực hiện action login (Promise pending)
     builder.addCase(actions.getCategories.pending, (state) => {
-      // Bật trạng thái loading
       state.isLoading = true;
     });
 
-    // Khi thực hiện action login thành công (Promise fulfilled)
     builder.addCase(actions.getCategories.fulfilled, (state, action) => {
-      // Tắt trạng thái loading, lưu thông tin user vào store
       state.isLoading = false;
       state.categories = action.payload;
     });
 
-    //Khi thực hiện action login thất bại (Promise rejected)
     builder.addCase(actions.getCategories.rejected, (state, action) => {
-      //Tắt trạng thái loading lưu thông tin báo lỗi vào store
       state.isLoading = false;
       state.errorMessage = action.payload.message;
     });
   },
 });
 
-export const {} = appSlice.actions;
+export const { showModal } = appSlice.actions;
 
 export default appSlice.reducer;
