@@ -2,8 +2,8 @@ import PropTypes from "prop-types";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCurrent } from "../../../store/user/asyncActions";
-import "./UserForm.scss";
 import { logout } from "../../../store/user/userSlice";
+import "./UserForm.scss";
 
 const UserForm = ({ active }) => {
   const dispatch = useDispatch();

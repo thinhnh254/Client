@@ -5,15 +5,18 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getProducts } from "../../apis/product";
 import banner1 from "../../assets/icon-food.png";
+import { Pagination } from "../../components";
+import ProductDetail from "../../components/ProductDetail/ProductDetail";
 import "./ShopPage.scss";
 
 const ShopPage = () => {
   const { categories } = useSelector((state) => state.app);
-  // console.log(categories);
 
   const [products, setProducts] = useState(null);
+  const [selectedProduct, setSelectedProduct] = useState(null);
   const fetchProducts = async () => {
     const product = await getProducts();
+    console.log(product);
     if (product.success) {
       setProducts(product.products);
     }
@@ -21,7 +24,14 @@ const ShopPage = () => {
       getProducts({ sort: "-sold" }),
       getProducts({ sort: "-createdAt" }),
     ]);
-    console.log({ bestSeller, newProducts });
+    // console.log({ bestSeller, newProducts });
+  };
+  const handleViewDetail = (product) => {
+    setSelectedProduct(product);
+  };
+
+  const handleCloseDetail = () => {
+    setSelectedProduct(null);
   };
   useEffect(() => {
     fetchProducts();
@@ -54,7 +64,6 @@ const ShopPage = () => {
             <div className="box" key={index}>
               <img src={el.images} alt="" />
 
-              {/* <img src={product} alt="" /> */}
               <h3 key={index}>{el.title}</h3>
               <div className="price">{el.price}</div>
               <div className="stars">
@@ -64,13 +73,26 @@ const ShopPage = () => {
                 <FontAwesomeIcon icon={faStar} />
                 <FontAwesomeIcon icon={faStarHalfAlt} />
               </div>
-              <button type="button" className="btn">
+              {/* <Link to={`/details/${el._id}`} className="btn">
                 add to cart
+              </Link> */}
+              <button className="btn" onClick={() => handleViewDetail(el)}>
+                View details
               </button>
             </div>
           ))}
+          {selectedProduct && (
+            <ProductDetail
+              product={selectedProduct}
+              onClose={handleCloseDetail}
+            />
+          )}
         </div>
       </section>
+
+      <div className="w-4/6 text-xl m-auto my-4 flex justify-end">
+        <Pagination />
+      </div>
     </div>
   );
 };
