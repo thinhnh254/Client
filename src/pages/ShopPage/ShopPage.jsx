@@ -16,9 +16,8 @@ const ShopPage = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const fetchProducts = async () => {
     const product = await getProducts();
-    console.log(product);
     if (product.success) {
-      setProducts(product.products);
+      setProducts(product);
     }
     const [bestSeller, newProducts] = await Promise.all([
       getProducts({ sort: "-sold" }),
@@ -60,7 +59,7 @@ const ShopPage = () => {
         </h1>
 
         <div className="box-container">
-          {products?.map((el, index) => (
+          {products?.products?.map((el, index) => (
             <div className="box" key={index}>
               <img src={el.images} alt="" />
 
@@ -91,7 +90,7 @@ const ShopPage = () => {
       </section>
 
       <div className="w-4/6 text-xl m-auto my-4 flex justify-end">
-        <Pagination />
+        <Pagination totalCount={products?.counts} />
       </div>
     </div>
   );

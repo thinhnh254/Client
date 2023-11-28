@@ -1,9 +1,10 @@
 import React from "react";
-import { PagiItem } from "../";
+import { PagiItem } from "..";
 import usePagination from "../../hooks/usePagination";
 
 const Pagination = ({ totalCount }) => {
-  const pagination = usePagination(66, 2);
+  console.log(totalCount);
+  const pagination = usePagination(totalCount, 1);
   return (
     <div className="flex items-center">
       {pagination?.map((el) => (
