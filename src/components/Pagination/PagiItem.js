@@ -2,6 +2,7 @@ import clsx from "clsx";
 import React from "react";
 import {
   createSearchParams,
+  useLocation,
   useNavigate,
   useParams,
   useSearchParams,
@@ -10,25 +11,17 @@ import {
 const PagiItem = ({ children }) => {
   const navigate = useNavigate();
   const [params] = useSearchParams();
-  const { shop } = useParams;
+  const location = useLocation();
 
   const handlePagination = () => {
-    let param = [];
-    for (let i of params.entries()) {
-      param.push(i);
-    }
-
-    const queries = {};
-    for (let i of param) {
-      queries[i[0]] = i[1];
-    }
+  const queries = Object.fromEntries([...params])
 
     if (Number(children)) {
       queries.page = children;
     }
 
     navigate({
-      pathname: `/shop`,
+      pathname: location?.pathname,
       search: createSearchParams(queries).toString(),
     });
   };

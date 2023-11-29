@@ -1,26 +1,52 @@
 import moment from "moment";
 import React, { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { getAllUsers } from "../../apis/user";
+import { InputField, Pagination } from "../../components";
+import useDebounce from "../../hooks/useDebounce";
 import { roles } from "../../ultils/contants";
 
 const ManageUsers = () => {
   const [users, setUsers] = useState(null);
+  const [queries, setQueries] = useState({ q: "" });
+  const [params] = useSearchParams();
+
   const fetchUsers = async (params) => {
-    const response = await getAllUsers(params);
+    const response = await getAllUsers({
+      ...params,
+      limit: process.env.REACT_APP_LIMIT,
+    });
     console.log(response);
     if (response.success) {
       setUsers(response);
     }
   };
+
+  const queriesDebounce = useDebounce(queries.q, 800);
   useEffect(() => {
-    fetchUsers();
-  }, []);
+    const queries = Object.fromEntries([...params]);
+    if (queriesDebounce) queries.q = queriesDebounce;
+    fetchUsers(queries);
+  }, [queriesDebounce, params]);
+
   return (
     <div className="w-full">
       <h1 className="h-[75px] flex justify-between items-center text-3xl font-bold px-4 border-b border-white">
         <span>Manage users</span>
       </h1>
+
       <div className="w-full p-4">
+        <div className="flex justify-end py-4">
+          <InputField
+            className="text-black"
+            nameKey={"q"}
+            value={queries.q}
+            setValue={setQueries}
+            placeholder="Search..."
+            isHideLabel
+          />
+        </div>
+
         <table className="table-auto mb-6 text-left w-full">
           <thead className="font-bold bg-gray-700 text-[13px]">
             <tr className="border border-gray-500">
@@ -62,6 +88,9 @@ const ManageUsers = () => {
             ))}
           </tbody>
         </table>
+        <div className="w-full flex">
+          <Pagination totalCount={users?.counts} />
+        </div>
       </div>
     </div>
   );

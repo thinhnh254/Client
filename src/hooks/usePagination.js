@@ -4,12 +4,12 @@ import { generateRange } from "../ultils/helper";
 
 const usePagination = (totalProductCount, currentPage, siblingCount = 1) => {
   const paginationArray = useMemo(() => {
-    const pageSize = process.env.REACT_APP_PRODUCT_LIMIT || 10;
+    const pageSize = process.env.REACT_APP_LIMIT || 10;
     const paginationCount = Math.ceil(totalProductCount / pageSize);
     const totalPaginationItem = siblingCount + 5;
 
     if (paginationCount <= totalPaginationItem) {
-      return generateRange(1, totalProductCount);
+      return generateRange(1, paginationCount);
     }
 
     const isShowLeft = currentPage - siblingCount > 2;

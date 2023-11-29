@@ -1,15 +1,36 @@
 import React from "react";
+import { useSearchParams } from "react-router-dom";
 import { PagiItem } from "..";
 import usePagination from "../../hooks/usePagination";
 
 const Pagination = ({ totalCount }) => {
-  console.log(totalCount);
-  const pagination = usePagination(totalCount, 1);
+  const [params] = useSearchParams();
+  const pagination = usePagination(totalCount, params.get("page") || 1);
+
+  const range = () => {
+    const currentPage = +params.get("page");
+    const pageSize = +process.env.REACT_APP_LIMIT || 10;
+    const start = (currentPage - 1) * pageSize + 1;
+    const end = Math.min(currentPage * pageSize, totalCount);
+
+    return `${start} - ${end}`;
+    
+  };
   return (
-    <div className="flex items-center">
-      {pagination?.map((el) => (
-        <PagiItem key={el}>{el}</PagiItem>
-      ))}
+    <div className="flex w-full justify-between items-center">
+      {!+params.get("page") && (
+        <span className="text-sm italic">{`Show products 1 - ${
+          Math.min(+process.env.REACT_APP_LIMIT, totalCount) || 10
+        } of ${totalCount}`}</span>
+      )}
+      {+params.get("page") && (
+        <span className="text-sm italic">{`Show products ${range()} of ${totalCount}`}</span>
+      )}
+      <div className="flex items-center">
+        {pagination?.map((el) => (
+          <PagiItem key={el}>{el}</PagiItem>
+        ))}
+      </div>
     </div>
   );
 };
