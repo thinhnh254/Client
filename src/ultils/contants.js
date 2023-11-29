@@ -45,10 +45,21 @@ export const adminSidebar = [
 export const roles = [
   {
     code: 0,
-    value: 'Admin'
+    value: "Admin",
   },
   {
     code: 1,
-    value: 'User'
-  }
-]
+    value: "User",
+  },
+];
+
+export const blockStatus = [
+  {
+    code: true,
+    value: "Blocked",
+  },
+  {
+    code: false,
+    value: "Active",
+  },
+];
