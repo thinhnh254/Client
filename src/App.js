@@ -2,6 +2,8 @@ import React, { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import DefaultComponent from "./components/DefaultComponent/DefaultComponent";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {
   AdminLayout,
   CreateProducts,
@@ -27,6 +29,7 @@ function App() {
     <div>
       <Router>
         {/* {isShowModal && <Modal>{modalChildren}</Modal>} */}
+        <ToastContainer />
         <Routes>
           {routes.map((route) => {
             const Page = route.page;

@@ -18,3 +18,16 @@ export const getAllUsers = (params) =>
     method: "get",
     params,
   });
+
+export const updateUsers = (data, uid) =>
+  axios({
+    url: "/user/" + uid,
+    method: "put",
+    data,
+  });
+
+export const deleteUser = (uid) =>
+  axios({
+    url: "/user/" + uid,
+    method: "delete",
+  });

@@ -2,7 +2,7 @@ import { faStar, faStarHalfAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { getProducts } from "../../apis/product";
 import banner1 from "../../assets/icon-food.png";
 import { Pagination } from "../../components";
@@ -14,8 +14,13 @@ const ShopPage = () => {
 
   const [products, setProducts] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const fetchProducts = async () => {
-    const product = await getProducts();
+  const [params] = useSearchParams();
+
+  const fetchProducts = async (params) => {
+    const product = await getProducts({
+      ...params,
+      limit: process.env.REACT_APP_LIMIT,
+    });
     if (product.success) {
       setProducts(product);
     }
@@ -33,8 +38,9 @@ const ShopPage = () => {
     setSelectedProduct(null);
   };
   useEffect(() => {
-    fetchProducts();
-  }, []);
+    const queries = Object.fromEntries([...params]);
+    fetchProducts(queries);
+  }, [params]);
 
   return (
     <div>
