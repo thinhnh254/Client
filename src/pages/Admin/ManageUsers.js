@@ -99,8 +99,8 @@ const ManageUsers = () => {
   }, [editElm]);
 
   return (
-    <div className={clsx("w-full", editElm && "pl-16")}>
-      <h1 className="h-[75px] flex justify-between items-center text-3xl font-bold px-4 border-b border-white">
+    <div className={clsx("w-full text-3xl", editElm && "pl-16")}>
+      <h1 className="h-[75px] flex justify-between items-center text-6xl font-bold px-4 border-b border-white">
         <span>Manage users</span>
       </h1>
 
@@ -113,6 +113,7 @@ const ManageUsers = () => {
             setValue={setQueries}
             placeholder="Search..."
             isHideLabel
+            style='p-2 w-10'
           />
         </div>
         <form onSubmit={handleSubmit(handleUpdate)}>

@@ -10,13 +10,14 @@ const Select = ({
   validate,
   style,
   fullWidth,
-  defaultValue
+  defaultValue,
 }) => {
   return (
     <div className="flex flex-col gap-2">
       {label && <label htmlFor={id}>{label}</label>}
-      <select defaultValue={defaultValue}
-        className={clsx("form-select", fullWidth && "w-full", style)}
+      <select
+        defaultValue={defaultValue}
+        className={clsx("form-select p-2", fullWidth && "w-full", style)}
         id={id}
         {...register(id, validate)}
       >
@@ -26,7 +27,7 @@ const Select = ({
         ))}
       </select>
       {errors[id] && (
-        <small className="text-xs text-red-500">{errors[id]?.message}</small>
+        <small className="text-lg text-red-500">{errors[id]?.message}</small>
       )}
     </div>
   );

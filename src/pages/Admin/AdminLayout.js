@@ -9,7 +9,7 @@ const AdminLayout = () => {
     return <Navigate to={"/login"} replace={true} />;
   }
   return (
-    <div className="flex w-full bg-orange-400 min-h-screen relative text-white">
+    <div className="flex w-full bg-orange-400 min-h-screen relative text-white text-3xl">
       <div className="w-[327px] top-0 bottom-0 flex-none fixed">
         <AdminSidebar />
       </div>
