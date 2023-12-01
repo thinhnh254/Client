@@ -11,10 +11,10 @@ const InputField = ({
   style,
   fullWidth,
   placeholder,
-  isHideLabel
+  isHideLabel,
 }) => {
   return (
-    <div className={clsx("flex flex-col relative mb-2", fullWidth && 'w-full') }>
+    <div className={clsx("flex flex-col mb-2", fullWidth && "w-full")}>
       {!isHideLabel && value.trim() !== "" && (
         <label
           className="text-[10px] animate-slide-top-sm absolute top-0 left-[12px] block bg-white px-1"
@@ -29,7 +29,9 @@ const InputField = ({
           "px-4 py2 rounded-sm border w-full mt-2 placeholder:text-sm placeholder:italic outline-none text-black",
           style
         )}
-        placeholder={placeholder || nameKey?.slice(0,1).toUpperCase() + nameKey?.slice(1)}
+        placeholder={
+          placeholder || nameKey?.slice(0, 1).toUpperCase() + nameKey?.slice(1)
+        }
         value={value}
         onChange={(e) =>
           setValue((prev) => ({ ...prev, [nameKey]: e.target.value }))

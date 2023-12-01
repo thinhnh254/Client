@@ -35,33 +35,42 @@ const UserForm = ({ active }) => {
   return (
     <form className={`user-form ${active ? "active" : ""}`}>
       {isLoggedIn && current ? (
-        <div>
-          {`welcome,${current?.firstname} ${current?.lastname}`}
-          <button className="btn" onClick={() => dispatch(logout())}>
-            Log out
-          </button>
-          <Link className="btn" to={+current?.role === 0 ?  `/${path.ADMIN}/${path.DASHBOARD}` : `/${path.MEMBER}/${path.PERSONAL}`}>
-            <span>profile</span>
-          </Link>
-        </div>
+        <h3 className="profile-name">
+          {`welcome, ${current?.firstname} ${current?.lastname}`}
+          <div>
+            <Link
+              className="btn"
+              to={
+                +current?.role === 0
+                  ? `/${path.ADMIN}/${path.DASHBOARD}`
+                  : `/${path.MEMBER}/${path.PERSONAL}`
+              }
+            >
+              {+current?.role === 0 ? (
+                <span>manage</span>
+              ) : (
+                <span>profile</span>
+              )}
+            </Link>
+          </div>
+          <div>
+            <button className="btn" onClick={() => dispatch(logout())}>
+              Log out
+            </button>
+          </div>
+        </h3>
       ) : (
         <div>
-          <h3>login now</h3>
-          <div className="box">
-            <input type="email" placeholder="your email" />
+          <div>
+            <Link to="/login">
+              <button className="btn btn-login">login now</button>
+            </Link>
           </div>
-          <div className="box">
-            <input type="password" placeholder="your password" />
+          <div>
+            <Link to="/register">
+              <button className="btn btn-register">Register</button>
+            </Link>
           </div>
-          <p>
-            forgot your password <a href="/">click here</a>
-          </p>
-          <p>
-            don&apos;t have an account <a href="/">create now</a>
-          </p>
-          <button type="submit" className="btn">
-            login now
-          </button>
         </div>
       )}
     </form>

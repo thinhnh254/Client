@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { register } from "../../apis/user";
 import logoImage from "../../assets/Logo-main.png";
 import "./RegisterPage.scss";
@@ -10,6 +11,7 @@ const RegisterPage = () => {
   const [lastName, setLastName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [mobile, setMobile] = useState("");
   const [error, setError] = useState(null);
   const navigate = useNavigate(); // Initialize navigate function
 
@@ -33,33 +35,45 @@ const RegisterPage = () => {
     setConfirmPassword(e.target.value);
   };
 
+  const handleOnChangeMobile = (e) => {
+    setMobile(e.target.value);
+  };
+
   const handleRegister = async () => {
     try {
-      const response = await register(email, firstName, lastName, password);
+      const response = await register(
+        email,
+        firstName,
+        lastName,
+        password,
+        mobile
+      );
 
       if (response.success) {
         setError(response.message);
+        toast.success("success");
         setTimeout(() => {
-          navigate("/login"); // Navigate to the home page route
-        }, 3000); // 3000 milliseconds (3 seconds)
+          navigate("/login"); 
+        }, 1000); 
       } else {
+        toast.error(response.message);
         setError(response.message);
       }
-      // Handle the response, e.g., store token, user info, etc.
+      
       console.log("Register successful:", response);
     } catch (error) {
       if (error.response && error.response.data && error.response.data.error) {
-        // If the backend provided an error message, update the error state
+        
         setError(error.response.data.error);
       } else {
-        setError("An error occurred during register"); // Fallback message if no specific error message from backend
+        setError("An error occurred during register"); 
       }
       console.error("Error during register:", error);
     }
   };
 
   return (
-    <div className="container">
+    <div className="container-bg">
       <div className="form-register">
         <img src={logoImage} alt="logo" className="logo" />
         <br />
@@ -107,17 +121,13 @@ const RegisterPage = () => {
             className="input-text"
           />
           <br />
-          <div className="terms">
-            <input
-              type="checkbox"
-              name="check-box"
-              className="input-checkbox"
-              id="checkbox"
-            />
-            <label htmlFor="checkbox" className="sub-link">
-              Accept terms and services
-            </label>
-          </div>
+          <input
+            type="number"
+            value={mobile}
+            onChange={handleOnChangeMobile}
+            placeholder="Mobile"
+            className="input-text"
+          />
           {error && <span className="error">{error}</span>}
 
           <button onClick={handleRegister}>Register</button>

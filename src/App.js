@@ -12,7 +12,7 @@ import {
   ManageProducts,
   ManageUsers,
 } from "./pages/Admin";
-import { MemberLayout, Personal } from "./pages/Member";
+import { MemberLayout, Personal,History,MyCart,Wishlist } from "./pages/Member";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import { routes } from "./routes";
 import { getCategories } from "./store/app/asyncActions";
@@ -55,6 +55,9 @@ function App() {
           </Route>
           <Route path={path.MEMBER} element={<MemberLayout />}>
             <Route path={path.PERSONAL} element={<Personal />} />
+            <Route path={path.HISTORY} element={<History />} />
+            <Route path={path.MY_CART} element={<MyCart />} />
+            <Route path={path.WISHLIST} element={<Wishlist />} />
           </Route>
           <Route path={path.ALL} element={<NotFoundPage />} />
         </Routes>

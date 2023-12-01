@@ -10,6 +10,9 @@ const path = {
   //member
   MEMBER: "member",
   PERSONAL: "personal",
+  MY_CART: "my-cart",
+  HISTORY: "history",
+  WISHLIST: "wishlist",
 };
 
 export default path;

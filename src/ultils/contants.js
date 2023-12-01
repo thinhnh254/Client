@@ -42,6 +42,39 @@ export const adminSidebar = [
   },
 ];
 
+export const memberSidebar = [
+  {
+    id: 1,
+    type: "SINGLE",
+    text: "Personal",
+    path: `/${path.MEMBER}/${path.PERSONAL}`,
+    icon: <RxDashboard size={20} />,
+  },
+  {
+    id: 2,
+    type: "SINGLE",
+    text: "My Cart",
+    path: `/${path.MEMBER}/${path.MY_CART}`,
+    icon: <HiMiniUserGroup size={20} />,
+  },
+
+  {
+    id: 3,
+    type: "SINGLE",
+    text: "Buy history",
+    path: `/${path.MEMBER}/${path.HISTORY}`,
+    icon: <MdManageSearch size={20} />,
+  },
+  {
+    id: 4,
+    type: "SINGLE",
+    text: "Wishlist",
+    path: `/${path.MEMBER}/${path.WISHLIST}`,
+    icon: <MdManageSearch size={20} />,
+  },
+];
+
+
 export const roles = [
   {
     code: 0,

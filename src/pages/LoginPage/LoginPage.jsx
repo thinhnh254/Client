@@ -14,6 +14,7 @@ import { Loading } from "../../components";
 import { showModal } from "../../store/app/appSlice";
 import { login } from "../../store/user/userSlice";
 import "./LoginPage.scss";
+import { toast } from "react-toastify";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -38,34 +39,35 @@ const LoginPage = () => {
       dispatch(showModal({ isShowModal: false, modalChildren: null }));
       if (response.success) {
         setError(response.message);
+        toast.success("success");
         setTimeout(() => {
           dispatch(
             login({
               isLoggedIn: true,
               token: response.accessToken,
               userData: response.userData,
+              
             })
           );
-          navigate("/"); // Navigate to the home page route
-        }, 3000); // 3000 milliseconds (3 seconds)
+          navigate("/");
+        }, 1000);
       } else {
+        toast.error(response.message);
         setError(response.message);
       }
-      // Handle the response, e.g., store token, user info, etc.
-      console.log("Login successful:", response);
     } catch (error) {
       if (error.response && error.response.data && error.response.data.error) {
         // If the backend provided an error message, update the error state
         setError(error.response.data.error);
       } else {
-        setError("An error occurred during login"); // Fallback message if no specific error message from backend
+        setError("An error occurred during login");
       }
       console.error("Error during login:", error);
     }
   };
 
   return (
-    <div className="container">
+    <div className="container-bg">
       <div className="form-login">
         <img src={logoImage} alt="logo" className="logo" />
         <br />

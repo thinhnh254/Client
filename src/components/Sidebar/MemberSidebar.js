@@ -2,15 +2,18 @@ import clsx from "clsx";
 import React, { Fragment, memo, useState } from "react";
 import { FaAngleDoubleRight } from "react-icons/fa";
 import { FaAnglesDown } from "react-icons/fa6";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import logo from "../../assets/logo.png";
-import { adminSidebar } from "../../ultils/contants";
+import avatar from "../../assets/icon-user.png";
+import { memberSidebar } from "../../ultils/contants";
 
 const activedStyle = "px-4 py-2 flex items-center gap-2 bg-gray-300";
 const notActivedStyle = "px-4 py-2 flex items-center gap-2 hover:bg-gray-200";
 
-const AdminSidebar = () => {
+const MemberSidebar = () => {
   const [actived, setActived] = useState([]);
+  const { current } = useSelector((state) => state.user);
+  console.log(current);
   const handleShowTabs = (tabID) => {
     if (actived.some((el) => el === tabID)) {
       setActived((prev) => prev.filter((el) => el !== tabID));
@@ -19,16 +22,19 @@ const AdminSidebar = () => {
     }
   };
   return (
-    <div className="bg-white h-full py-4">
-      <div className="flex flex-col justify-center items-center p-4 gap-2">
-        <a href="/">
-          <img src={logo} alt="logo" className="w-[200px] object-contain" />
-        </a>
-        <small className="text-black">Admin Workspace</small>
+    <div className="bg-white h-full py-4 w-[250px] flex-none">
+      <div className="w-full flex flex-col items-center justify-center py-4">
+        <img
+          src={current?.avatar || avatar}
+          alt="logo"
+          className="w-16 h-16 object-cover"
+        />
+
+        <small className="text-black">{`${current?.lastname} ${current?.firstname}`}</small>
       </div>
 
       <div>
-        {adminSidebar.map((el) => (
+        {memberSidebar.map((el) => (
           <NavLink className="text-orange-600">
             <Fragment key={el.id}>
               {el.type === "SINGLE" && (
@@ -89,4 +95,4 @@ const AdminSidebar = () => {
   );
 };
 
-export default memo(AdminSidebar);
+export default memo(MemberSidebar);

@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useSearchParams } from "react-router-dom";
 import { getProducts } from "../../apis/product";
-import banner1 from "../../assets/icon-food.png";
 import { Pagination } from "../../components";
 import ProductDetail from "../../components/ProductDetail/ProductDetail";
 import "./ShopPage.scss";
@@ -52,7 +51,6 @@ const ShopPage = () => {
         <div className="box-container">
           {categories?.map((el) => (
             <Link to={"#"} className="box">
-              <img src={banner1} alt="" />
               <h3>{el.title}</h3>
             </Link>
           ))}
