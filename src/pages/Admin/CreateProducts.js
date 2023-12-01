@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 import { createProduct } from "../../apis";
 import { Button, InputForm, MarkdownEditor, Select } from "../../components";
 
@@ -26,7 +27,6 @@ const CreateProducts = () => {
 
   const handleCreateProduct = async (data) => {
     if (data.category) {
-      // data.category = categories?.find((el) => el._id === data.category)?.title;
       const selectedCategory = categories?.find(
         (el) => el._id === data.category
       );
@@ -44,7 +44,11 @@ const CreateProducts = () => {
     }
 
     const response = await createProduct(formData);
-    console.log(response);
+    if (response.success) {
+      toast.success("Success");
+      reset();
+      setPayload({ images: "" });
+    } else toast.error("Fail");
   };
 
   return (

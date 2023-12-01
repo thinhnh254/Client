@@ -27,7 +27,7 @@ const ProductDetail = ({ product, onClose }) => {
           <h2>{product.title}</h2>
           <img src={product.images} alt={product.title} />
           <p>Description: {cleanDescription}</p>
-          <p>Price: {product.price}</p>
+          <p className="line-clamp-[10]">Price: {product.price}</p>
         </div>
         <button onClick={onClose}>X</button>
       </div>

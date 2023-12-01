@@ -70,7 +70,7 @@ const ShopPage = () => {
               <img src={el.images} alt="" />
 
               <h3 key={index}>{el.title}</h3>
-              <div className="price">{el.price}</div>
+              <div className="price">{el.price}$</div>
               <div className="stars">
                 <FontAwesomeIcon icon={faStar} />
                 <FontAwesomeIcon icon={faStar} />
