@@ -52,13 +52,13 @@ const Personal = () => {
   }, [current]);
   return (
     <div className="w-full relative px-4">
-      <header className="text-3xl font-semibold py-4 border-b border-b-blue-200">
+      <header className="text-6xl font-semibold py-4 border-b border-b-blue-200">
         Personal
       </header>
 
       <form
         onSubmit={handleSubmit(handleUpdateInfo)}
-        className="w-3/5 mx-auto py-8 flex flex-col gap-4 my-4"
+        className="w-3/5 mx-auto flex flex-col gap-4 my-16 text-3xl"
       >
         <InputForm
           label="Firstname"
@@ -68,6 +68,7 @@ const Personal = () => {
           validate={{
             required: "Need fill",
           }}
+          style="mb-12"
         />
         <InputForm
           label="Lastname"
@@ -77,6 +78,7 @@ const Personal = () => {
           validate={{
             required: "Need fill",
           }}
+          style="mb-12"
         />
         <InputForm
           label="Email"
@@ -90,6 +92,7 @@ const Personal = () => {
               message: "email invalid",
             },
           }}
+          style="mb-12"
         />
         <InputForm
           label="Phone"
@@ -105,6 +108,7 @@ const Personal = () => {
               message: "Phone invalid",
             },
           }}
+          style="mb-12"
         />
         <div className="flex items-center gap-2 my-6">
           <span className="font-medium">Account status: </span>
