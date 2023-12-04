@@ -13,13 +13,12 @@
   background: #fff;
   box-shadow: $box-shadow;
 
-
   .logo {
     display: flex;
-    justify-content: center;
+    justify-content: start;
     max-width: 100%;
-    width: 130px;
-    height: 50px;
+    width: 20rem;
+    height: 5rem;
     cursor: pointer;
   }
 

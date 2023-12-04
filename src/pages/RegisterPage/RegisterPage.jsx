@@ -53,20 +53,19 @@ const RegisterPage = () => {
         setError(response.message);
         toast.success("success");
         setTimeout(() => {
-          navigate("/login"); 
-        }, 1000); 
+          navigate("/login");
+        }, 1000);
       } else {
         toast.error(response.message);
         setError(response.message);
       }
-      
+
       console.log("Register successful:", response);
     } catch (error) {
       if (error.response && error.response.data && error.response.data.error) {
-        
         setError(error.response.data.error);
       } else {
-        setError("An error occurred during register"); 
+        setError("An error occurred during register");
       }
       console.error("Error during register:", error);
     }
@@ -75,7 +74,9 @@ const RegisterPage = () => {
   return (
     <div className="container-bg">
       <div className="form-register">
-        <img src={logoImage} alt="logo" className="logo" />
+        <Link className="logo" to={"/"}>
+          <img src={logoImage} alt="logo" className="logo" />
+        </Link>
         <br />
         <h1 className="register">Register</h1>
         <p className="sub-text">

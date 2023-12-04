@@ -8,13 +8,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { apiLogin } from "../../apis/user";
 import logoImage from "../../assets/Logo-main.png";
 import { Loading } from "../../components";
 import { showModal } from "../../store/app/appSlice";
 import { login } from "../../store/user/userSlice";
 import "./LoginPage.scss";
-import { toast } from "react-toastify";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -33,7 +33,7 @@ const LoginPage = () => {
 
   const handleLogin = async () => {
     try {
-      <Loading/>
+      <Loading />;
       dispatch(showModal({ isShowModal: true, modalChildren: <Loading /> }));
       const response = await apiLogin(email, password);
       dispatch(showModal({ isShowModal: false, modalChildren: null }));
@@ -46,7 +46,6 @@ const LoginPage = () => {
               isLoggedIn: true,
               token: response.accessToken,
               userData: response.userData,
-              
             })
           );
           navigate("/");
@@ -69,12 +68,14 @@ const LoginPage = () => {
   return (
     <div className="container-bg">
       <div className="form-login">
-        <img src={logoImage} alt="logo" className="logo" />
+        <Link className="logo" to={"/"}>
+          <img src={logoImage} alt="logo" className="logo" />
+        </Link>
         <br />
         <h1 className="login">Login</h1>
         <p className="sub-text">Hello, Login to continue !</p>
         <p className="sub-text">
-          Or 
+          Or
           <Link to="/register" className="sub-link">
             Register new account
           </Link>
