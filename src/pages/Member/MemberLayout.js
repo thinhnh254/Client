@@ -11,7 +11,7 @@ const MemberLayout = () => {
 
   return (
     <div className="flex">
-      <MemberSidebar/>
+      <MemberSidebar />
       <div className="flex-auto bg-gray-100 min-h-screen">
         <Outlet />
       </div>

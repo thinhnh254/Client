@@ -48,14 +48,14 @@ export const memberSidebar = [
     type: "SINGLE",
     text: "Personal",
     path: `/${path.MEMBER}/${path.PERSONAL}`,
-    icon: <RxDashboard size={20} />,
+    icon: <HiMiniUserGroup size={20} />,
   },
   {
     id: 2,
     type: "SINGLE",
     text: "My Cart",
     path: `/${path.MEMBER}/${path.MY_CART}`,
-    icon: <HiMiniUserGroup size={20} />,
+    icon: <RxDashboard size={20} />,
   },
 
   {
@@ -73,7 +73,6 @@ export const memberSidebar = [
     icon: <MdManageSearch size={20} />,
   },
 ];
-
 
 export const roles = [
   {

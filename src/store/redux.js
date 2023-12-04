@@ -12,6 +12,7 @@ import {
 import storage from "redux-persist/lib/storage";
 import appSlice from "./app/appSlice";
 import userSlice from "./user/userSlice";
+import counterReducer from './counter/counterSlide'
 
 const commonConfig = {
   key: "shop/user",
@@ -19,13 +20,14 @@ const commonConfig = {
 };
 const userConfig = {
   ...commonConfig,
-  whitelist: ["isLoggedIn", "token", "current"],
+  whitelist: ["isLoggedIn", "token", "current", 'currentCart'],
 };
 
 export const store = configureStore({
   reducer: {
     app: appSlice,
     user: persistReducer(userConfig, userSlice),
+    counter: counterReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

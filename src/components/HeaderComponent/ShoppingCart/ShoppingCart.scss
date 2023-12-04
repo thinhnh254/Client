@@ -7,7 +7,7 @@
   padding: 1rem;
   border-radius: 0.5rem;
   width: 30rem;
-  max-height: 30rem;
+  max-height: 60rem;
   box-shadow: $box-shadow;
   background: #fff;
   overflow: auto;
@@ -19,12 +19,14 @@
   .box {
     display: flex;
     gap: 1;
+    max-height: 50rem;
     align-items: center;
     margin: 1rem 0;
     position: relative;
 
     img {
       height: 10rem;
+      width: 10rem;
       margin: 1rem;
     }
 
