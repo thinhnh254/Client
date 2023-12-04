@@ -113,12 +113,16 @@ const ManageUsers = () => {
             setValue={setQueries}
             placeholder="Search..."
             isHideLabel
-            style='p-2 w-10'
+            style="p-2 w-10"
           />
         </div>
         <form onSubmit={handleSubmit(handleUpdate)}>
-          {editElm && <Button type="submit">Submit</Button>}
-          <table className="table-auto mb-6 text-left w-full">
+          {editElm && (
+            <div className="flex justify-end py-4">
+              <Button type="submit">Submit</Button>
+            </div>
+          )}
+          <table className="table-auto mb-6 ml-4 text-left w-full">
             <thead className="font-bold bg-gray-700 text-[13px]">
               <tr className="border border-gray-500">
                 <th className="px-4 py-2">#</th>

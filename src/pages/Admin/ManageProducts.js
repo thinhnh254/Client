@@ -2,10 +2,12 @@ import moment from "moment/moment";
 import React, { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
-import { getProducts } from "../../apis/";
+import { deleteProduct, getProducts } from "../../apis/";
 import { InputField, Pagination } from "../../components/index";
 import useDebounce from "../../hooks/useDebounce";
 import UpdateProduct from "./UpdateProduct";
+import Swal from "sweetalert2";
+import { toast } from "react-toastify";
 
 const ManageProducts = () => {
   const [params] = useSearchParams();
@@ -45,6 +47,24 @@ const ManageProducts = () => {
 
   const queriesDebounce = useDebounce(queries.q, 800);
 
+    const handleDeleteProduct = (uid) => {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "Ready remove this user?",
+        showCancelButton: true,
+      }).then(async (rs) => {
+        if (rs.isConfirmed) {
+          const response = await deleteProduct(uid);
+          if (response.success) {
+            render();
+            toast.success(response.mes);
+          } else {
+            toast.error(response.mes);
+          }
+        }
+      });
+    };
+
   useEffect(() => {
     const queries = Object.fromEntries([...params]);
 
@@ -58,7 +78,11 @@ const ManageProducts = () => {
     <div className="w-full pl-8 flex flex-col gap-4 relative">
       {editProduct && (
         <div className="absolute inset-0 min-h-screen bg-gray-100 z-50">
-          <UpdateProduct editProduct={editProduct} render={render} setEditProduct={ setEditProduct} />
+          <UpdateProduct
+            editProduct={editProduct}
+            render={render}
+            setEditProduct={setEditProduct}
+          />
         </div>
       )}
       <div className="w-full"></div>
@@ -121,11 +145,17 @@ const ManageProducts = () => {
                 {moment(el.createdAt).format("DD/MM/YYYY")}
               </td>
               <td className="text-center py-2">
-                <span onClick={() => setEditProduct(el)} className="text-blue-500 hover:underline cursor-pointer px-1">
+                <span
+                  onClick={() => setEditProduct(el)}
+                  className="text-blue-500 hover:underline cursor-pointer px-1"
+                >
                   edit
                 </span>
-                <span className="text-red-500 hover:underline cursor-pointer px-1">
-                  delete
+                <span
+                  onClick={() => handleDeleteProduct(el._id)}
+                  className="px-2 text-red-500 hover:underline cursor-pointer"
+                >
+                  Delete
                 </span>
               </td>
             </tr>

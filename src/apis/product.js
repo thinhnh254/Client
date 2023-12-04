@@ -19,10 +19,16 @@ export const createProduct = (data) =>
     method: "post",
     data,
   });
-  
+
 export const updateProduct = (data, pid) =>
   axios({
     url: "/product/" + pid,
     method: "put",
     data,
+  });
+
+export const deleteProduct = (pid) =>
+  axios({
+    url: "/product/" + pid,
+    method: "delete",
   });
