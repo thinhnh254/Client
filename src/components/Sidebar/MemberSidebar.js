@@ -28,7 +28,7 @@ const MemberSidebar = () => {
         <img
           src={current?.avatar || avatar}
           alt="logo"
-          className="w-22 h-22 object-cover rounded-full"
+          className="w-[100px] h-[100px] object-cover rounded-full"
         />
 
         <small className="font-bold text-3xl my-6 border-b">{`${current?.lastname} ${current?.firstname}`}</small>

@@ -2,7 +2,7 @@ import React, { memo, useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { createProduct } from "../../apis/product";
+import { updateProduct } from "../../apis/product";
 import { Button, InputForm, MarkdownEditor, Select } from "../../components";
 
 const UpdateProduct = ({ editProduct, render, setEditProduct }) => {
@@ -12,7 +12,7 @@ const UpdateProduct = ({ editProduct, render, setEditProduct }) => {
     description: "",
   });
 
-  const [preview, setPreview] = useState({ images: [] });
+  // const [preview, setPreview] = useState({ images: [] });
 
   useEffect(() => {
     reset({
@@ -20,6 +20,7 @@ const UpdateProduct = ({ editProduct, render, setEditProduct }) => {
       price: editProduct?.price || "",
       quantity: editProduct?.quantity || "",
       category: editProduct?.category || "",
+      images: editProduct?.images || "",
     });
     setPayload({
       description:
@@ -27,9 +28,9 @@ const UpdateProduct = ({ editProduct, render, setEditProduct }) => {
           ? editProduct?.description?.join(",")
           : editProduct?.description,
     });
-    setPreview({
-      images: editProduct?.images || [],
-    });
+    // setPreview({
+    //   images: editProduct?.images || [],
+    // });
   }, [editProduct]);
 
   const [invalidFields, setInvalidFields] = useState([]);
@@ -55,7 +56,8 @@ const UpdateProduct = ({ editProduct, render, setEditProduct }) => {
       );
       data.category = selectedCategory?._id;
     }
-    const finalPayload = { ...data, ...payload, ...preview };
+    console.log(editProduct?.images);
+    const finalPayload = { ...data, ...payload };
     console.log(finalPayload);
     const formData = new FormData();
 
@@ -63,15 +65,17 @@ const UpdateProduct = ({ editProduct, render, setEditProduct }) => {
       formData.append(i[0], i[1]);
     }
 
-    if (finalPayload.images) {
-      formData.append("images", finalPayload.images[0]);
+    if (finalPayload?.images?.length > 0) {
+      formData.append("images", finalPayload?.images[0]);
     }
 
-    const response = await createProduct(formData);
+    delete finalPayload.images;
+
+    const response = await updateProduct(formData, editProduct._id);
     if (response.success) {
       toast.success("Success");
       reset();
-      setPayload({ images: "" });
+      // setPayload({ images: "" });
     } else toast.error("Fail");
   };
 
@@ -162,6 +166,11 @@ const UpdateProduct = ({ editProduct, render, setEditProduct }) => {
             <label className="font-semibold" htmlFor="images">
               Upload Image Products
             </label>
+            <img
+              src={editProduct?.images}
+              alt="images"
+              className="w-20 h-20 ml-8 object-cover rounded-full cursor-pointer"
+            />
             <input type="file" id="images" {...register("images")} />
             {errors["products"] && (
               <small className="text-lg text-red-500">
@@ -170,7 +179,7 @@ const UpdateProduct = ({ editProduct, render, setEditProduct }) => {
             )}
           </div>
 
-          <Button type="submit">Create New Product</Button>
+          <Button type="submit">Update Product</Button>
         </form>
       </div>
     </div>

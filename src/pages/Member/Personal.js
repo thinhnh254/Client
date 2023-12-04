@@ -21,7 +21,7 @@ const Personal = () => {
   const handleUpdateInfo = async (data) => {
     const formData = new FormData();
 
-    if (data.avatar.length > 0) {
+    if (data?.avatar?.length > 0) {
       formData.append("avatar", data.avatar[0]);
     }
 
@@ -32,7 +32,6 @@ const Personal = () => {
     }
 
     const response = await updateCurrent(formData);
-    console.log(response);
     if (response.success) {
       dispatch(getCurrent());
       toast.success("Success");
