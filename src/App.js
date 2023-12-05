@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import DefaultComponent from "./components/DefaultComponent/DefaultComponent";
 import { ToastContainer } from "react-toastify";
@@ -20,10 +20,10 @@ import path from "./ultils/path";
 
 function App() {
   const dispatch = useDispatch();
-  const { isShowModal, modalChildren } = useSelector((state) => state.app);
+  // const { isShowModal, modalChildren } = useSelector((state) => state.app);
   useEffect(() => {
     dispatch(getCategories());
-  }, []);
+  }, );
 
   return (
     <div>

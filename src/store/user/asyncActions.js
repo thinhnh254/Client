@@ -6,7 +6,6 @@ export const getCurrent = createAsyncThunk(
   async (data, { rejectWithValue }) => {
     try {
       const response = await apis.current();
-      console.log(response);
 
       if (!response.success) {
         return rejectWithValue("Failed to fetch categories");

@@ -9,3 +9,5 @@ export { default as InputSelect } from "./inputs/InputSelect";
 export { default as Select } from "./inputs/Select";
 export { default as MarkdownEditor } from "./inputs/MarkdownEditor";
 export { default as MemberSidebar } from "./Sidebar/MemberSidebar";
+export { default as Order } from "./order/Order";
+export { default as Paypal } from "./Payment/Paypal";

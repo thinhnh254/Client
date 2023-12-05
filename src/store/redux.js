@@ -11,8 +11,8 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import appSlice from "./app/appSlice";
+import counterReducer from "./counter/counterSlide";
 import userSlice from "./user/userSlice";
-import counterReducer from './counter/counterSlide'
 
 const commonConfig = {
   key: "shop/user",
@@ -20,7 +20,7 @@ const commonConfig = {
 };
 const userConfig = {
   ...commonConfig,
-  whitelist: ["isLoggedIn", "token", "current", 'currentCart'],
+  whitelist: ["isLoggedIn", "token", "current", "currentCart"],
 };
 
 export const store = configureStore({

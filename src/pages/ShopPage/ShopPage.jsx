@@ -64,6 +64,8 @@ const ShopPage = () => {
     fetchProducts(queries);
   }, [params]);
 
+  console.log(products)
+
   return (
     <div>
       <section className="category">

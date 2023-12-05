@@ -36,7 +36,10 @@ const UserForm = ({ active }) => {
     <form className={`user-form ${active ? "active" : ""}`}>
       {isLoggedIn && current ? (
         <h3 className="profile-name">
-          {`welcome, ${current?.firstname} ${current?.lastname}`}
+          {`${current?.firstname} ${current?.lastname}`}
+          <div>
+            <img src={current?.avatar} />
+          </div>
           <div>
             <Link
               className="btn"
