@@ -6,20 +6,17 @@ import { toast } from "react-toastify";
 import { removeCart } from "../../apis/user";
 import { getCurrent } from "../../store/user/asyncActions";
 
-const Order = ({ el, updateSubtotal }) => {
-  const [quantity, setQuantity] = useState(el.quantity);
+const Order = ({ el, handleChangeQuantities, defaultQuantity = 1 }) => {
+  const [quantity, setQuantity] = useState(() => defaultQuantity);
   const dispatch = useDispatch();
- const productPrice = el.product.price;
 
   const handleIncrease = () => {
     setQuantity(quantity + 1);
-    updateSubtotal(productPrice, quantity + 1);
   };
 
   const handleDecrease = () => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
-      updateSubtotal(productPrice, quantity - 1);
     }
   };
 
@@ -32,10 +29,10 @@ const Order = ({ el, updateSubtotal }) => {
     }
   };
 
-    useEffect(() => {
-      updateSubtotal();
-    }, [quantity, updateSubtotal]);
-
+  useEffect(() => {
+    handleChangeQuantities &&
+      handleChangeQuantities(el?.product?._id, quantity);
+  }, [quantity]);
 
   return (
     <div>

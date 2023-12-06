@@ -56,9 +56,8 @@ const UpdateProduct = ({ editProduct, render, setEditProduct }) => {
       );
       data.category = selectedCategory?._id;
     }
-    console.log(editProduct?.images);
+
     const finalPayload = { ...data, ...payload };
-    console.log(finalPayload);
     const formData = new FormData();
 
     for (let i of Object.entries(finalPayload)) {

@@ -1,23 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Button, Order } from "../../components/index";
+import { updateCart } from "../../store/user/userSlice";
 
 const MyCart = () => {
-  const { current } = useSelector((state) => state.user);
-  const [subtotal, setSubtotal] = useState(0);
+  const { currentCart } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
 
-  const updateSubtotal = () => {
-    const newSubtotal = current?.cart?.reduce(
-      (total, el) => total + el.product.price * el.quantity,
-      0
-    );
-    setSubtotal(newSubtotal);
+  const handleChangeQuantities = (pid, quantity) => {
+    // console.log({ pid, quantity });
+    // console.log(currentCart);
+    dispatch(updateCart({ pid, quantity }));
   };
-
-  useEffect(() => {
-    updateSubtotal();
-  }, [current]);
 
   return (
     <div className="w-full">
@@ -34,8 +29,13 @@ const MyCart = () => {
           <div className="col-span-3 w-full text-center">Price</div>
           <div className="col-span-3 w-full text-center">Action</div>
         </div>
-        {current?.cart?.map((el) => (
-          <Order key={el._id} el={el} updateSubtotal={updateSubtotal} />
+        {currentCart?.map((el) => (
+          <Order
+            key={el._id}
+            handleChangeQuantities={handleChangeQuantities}
+            el={el}
+            defaultQuantity={el.quantity}
+          />
         ))}
       </div>
 
@@ -43,11 +43,10 @@ const MyCart = () => {
         <span className="flex items-center text-3xl gap-8">
           <span>Subtotal:</span>
           <span className="text-red-400">
-            {/* {`${current?.cart?.reduce(
-              (sum, el) => +el.product?.price + sum,
+            {`${currentCart?.reduce(
+              (sum, el) => +el?.product?.price * el?.quantity + sum,
               0
-            )}`} */}
-            {subtotal}
+            )}`}
           </span>
         </span>
         <Link to="/checkout">
