@@ -11,3 +11,4 @@ export { default as MarkdownEditor } from "./inputs/MarkdownEditor";
 export { default as MemberSidebar } from "./Sidebar/MemberSidebar";
 export { default as Order } from "./order/Order";
 export { default as Paypal } from "./Payment/Paypal";
+export { default as Congrat } from "./Congrat/Congrat";
